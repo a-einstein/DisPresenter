@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e535b0b7-dff2-45ce-b267-95a1a6f6bef6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50136/Retrieving/RetrieveService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="RetrieveService.xsd" MetadataType="Schema" ID="5b70703e-782f-4783-bd36-75480c009c0d" SourceId="1" SourceUrl="http://localhost:50136/Retrieving/RetrieveService.svc?xsd=xsd0" />
+    <MetadataFile FileName="RetrieveService.wsdl" MetadataType="Wsdl" ID="a53e71cc-7307-4933-9407-91fe192c2440" SourceId="1" SourceUrl="http://localhost:50136/Retrieving/RetrieveService.svc?wsdl" />
+    <MetadataFile FileName="RetrieveService1.xsd" MetadataType="Schema" ID="aa9ae2d1-a75f-4f5a-89e8-6c01b2af21af" SourceId="1" SourceUrl="http://localhost:50136/Retrieving/RetrieveService.svc?xsd=xsd1" />
+    <MetadataFile FileName="RetrieveService2.xsd" MetadataType="Schema" ID="81ac6f29-6500-460a-a753-64a266025890" SourceId="1" SourceUrl="http://localhost:50136/Retrieving/RetrieveService.svc?xsd=xsd2" />
+    <MetadataFile FileName="RetrieveService.disco" MetadataType="Disco" ID="0bc0f064-0a75-41e3-8ede-df7c0ad0d3ab" SourceId="1" SourceUrl="http://localhost:50136/Retrieving/RetrieveService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
