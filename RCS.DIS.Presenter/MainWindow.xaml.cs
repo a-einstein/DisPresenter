@@ -14,56 +14,83 @@ namespace RCS.DIS.Presenter
             DataContext = this;
 
             // TODO add enablement.
-            SearchCommand = new DelegateCommand(Search);
+            DiagnosesSearchCommand = new DelegateCommand(SearchDiagnoses);
         }
 
-        public static readonly DependencyProperty SearchStringProperty =
-            DependencyProperty.Register("SearchString", typeof(string), typeof(MainWindow));
+        // TODO Should make this a separate view + viewmodel and use generic naming again..
+        #region Diagnoses
+        public static readonly DependencyProperty DiagnosesSearchStringProperty =
+            DependencyProperty.Register(nameof(DiagnosesSearchString), typeof(string), typeof(MainWindow));
 
-        public string SearchString
+        public string DiagnosesSearchString
         {
-            get { return (string)GetValue(SearchStringProperty); }
-            set { SetValue(SearchStringProperty, value); }
+            get { return (string)GetValue(DiagnosesSearchStringProperty); }
+            set { SetValue(DiagnosesSearchStringProperty, value); }
         }
 
-        public static readonly DependencyProperty SearchCommandProperty =
-            DependencyProperty.Register("SearchCommand", typeof(ICommand), typeof(MainWindow));
+        public static readonly DependencyProperty DiagnosesSearchCommandProperty =
+            DependencyProperty.Register(nameof(DiagnosesSearchCommand), typeof(ICommand), typeof(MainWindow));
 
-        public ICommand SearchCommand
+        public ICommand DiagnosesSearchCommand
         {
-            get { return (ICommand)GetValue(SearchCommandProperty); }
-            set { SetValue(SearchCommandProperty, value); }
+            get { return (ICommand)GetValue(DiagnosesSearchCommandProperty); }
+            set { SetValue(DiagnosesSearchCommandProperty, value); }
         }
 
-        public void Search()
+        public void SearchDiagnoses()
         {
-            var number = new RetrieveServiceClient().DiagnoseOmschrijvingContainsNumber(SearchString);
+            var number = new RetrieveServiceClient().DiagnoseOmschrijvingContainsNumber(DiagnosesSearchString);
 
             if (number > 100)
-                Message = $"Found {number}. Please refine your query.";
+                DiagnosesMessage = $"Found {number}. Please refine your query.";
             else
             {
-                Message = $"Found {number}. Please select a diagnose.";
-                Diagnoses = new RetrieveServiceClient().DiagnoseOmschrijvingContainsEntities(SearchString);
+                DiagnosesMessage = $"Found {number}. Please select a diagnose.";
+                Diagnoses = new RetrieveServiceClient().DiagnoseOmschrijvingContainsEntities(DiagnosesSearchString);
             }
         }
 
-        public static readonly DependencyProperty MessageProperty =
-            DependencyProperty.Register("Message", typeof(string), typeof(MainWindow), new PropertyMetadata("Enter part of the omschrijving to look for."));
+        public static readonly DependencyProperty DiagnosesMessageProperty =
+            DependencyProperty.Register(nameof(DiagnosesMessage), typeof(string), typeof(MainWindow), new PropertyMetadata("Enter part of the omschrijving to look for."));
 
-        public string Message
+        public string DiagnosesMessage
         {
-            get { return (string)GetValue(MessageProperty); }
-            set { SetValue(MessageProperty, value); }
+            get { return (string)GetValue(DiagnosesMessageProperty); }
+            set { SetValue(DiagnosesMessageProperty, value); }
         }
 
         public static readonly DependencyProperty DiagnosesProperty =
-            DependencyProperty.Register("Diagnoses", typeof(Diagnose[]), typeof(MainWindow), new PropertyMetadata(new Diagnose[0]));
+            DependencyProperty.Register(nameof(Diagnoses), typeof(Diagnose[]), typeof(MainWindow), new PropertyMetadata(new Diagnose[0]));
 
         public Diagnose[] Diagnoses
         {
             get { return (Diagnose[])GetValue(DiagnosesProperty); }
             set { SetValue(DiagnosesProperty, value); }
         }
+
+        public static readonly DependencyProperty SelectedDiagnoseProperty =
+            DependencyProperty.Register(nameof(SelectedDiagnose), typeof(Diagnose), typeof(MainWindow), new PropertyMetadata(new PropertyChangedCallback(SetSelectedDiagnoseSource)));
+
+        public Diagnose SelectedDiagnose
+        {
+            get { return (Diagnose)GetValue(SelectedDiagnoseProperty); }
+            set { SetValue(SelectedDiagnoseProperty, value); }
+        }
+
+        private static void SetSelectedDiagnoseSource(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var viewModel = d as MainWindow;
+            viewModel.SelectedDiagnoseSource = new Diagnose[] { viewModel.SelectedDiagnose };
+        }
+
+        public static readonly DependencyProperty SelectedDiagnoseSourceProperty =
+            DependencyProperty.Register(nameof(SelectedDiagnoseSource), typeof(Diagnose[]), typeof(MainWindow));
+
+        public Diagnose[] SelectedDiagnoseSource
+        {
+            get { return (Diagnose[])GetValue(SelectedDiagnoseSourceProperty); }
+            set { SetValue(SelectedDiagnoseSourceProperty, value); }
+        }
+        #endregion
     }
 }

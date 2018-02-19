@@ -14,32 +14,35 @@
         <TabControl>
             <TabItem Header="Criteria">
                 <TabControl>
-
-                    <TabItem Header="General">
+                    <TabItem Header="Filter">
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid.RowDefinitions>
+                             <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Versie" Width="100"/>
-                            <ComboBox Grid.Row="0" Grid.Column="1"/>
+                            <!--TODO Collect versions.-->
+                            <TextBlock Grid.Row="0" Text="Versie" Width="100"/>
+                            <ComboBox Grid.Row="1" Width="100 "/>
+
+                            <TextBlock Grid.Row="2" Text="Diagnose" Width="100"/>
+                            <DataGrid Grid.Row="3" ItemsSource="{Binding SelectedDiagnoseSource}" AutoGenerateColumns="False" IsReadOnly="True" IsEnabled="False">
+                                <!--TODO Is this bindable to the selection grid?-->
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>
+                                    <DataGridTextColumn Binding="{Binding SpecialismeCode}" Header="Specialisme"/>
+                                    <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
+                                    <DataGridTextColumn Binding="{Binding Peildatum}" Header="Peildatum"/>
+                                    <DataGridTextColumn Binding="{Binding Bestandsdatum}" Header="Bestandsdatum"/>
+                                    <DataGridTextColumn Binding="{Binding Versie}" Header="Versie"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </TabItem>
 
-                    <TabItem Header="Diagnose">
+                    <TabItem Header="Diagnoses">
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -47,20 +50,36 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Omschrijving contains"/>
-                            <TextBox Grid.Row="0" Grid.Column="1" Width="100" Text="{Binding SearchString}"/>
-                            <Button Grid.Row="0" Grid.Column="2" Content="Search" Width="100" Command="{Binding SearchCommand}"/>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <TextBlock  Text="Omschrijving contains"/>
+                                <TextBox Width="200" Text="{Binding DiagnosesSearchString}"/>
+                                <Button Content="Search diagnoses" Width="100" Command="{Binding DiagnosesSearchCommand}"/>
+                            </StackPanel>
 
-                            <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Message}" FontWeight="Bold" />
+                            <TextBlock Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Message}" FontWeight="Bold" />
 
-                            <DataGrid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Diagnoses}"/>
+                            <!--TODO Solve scrollbar visibility.-->
+                            <DataGrid Grid.Row="2" ItemsSource="{Binding Diagnoses}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding SelectedDiagnose, Mode=OneWayToSource}">
+                                <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>
+                                    <DataGridTextColumn Binding="{Binding SpecialismeCode}" Header="Specialisme"/>
+                                    <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
+                                    <DataGridTextColumn Binding="{Binding Peildatum}" Header="Peildatum"/>
+                                    <DataGridTextColumn Binding="{Binding Bestandsdatum}" Header="Bestandsdatum"/>
+                                    <DataGridTextColumn Binding="{Binding Versie}" Header="Versie"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Specialisme">
+
+                    <TabItem Header="Specialismes">
                     </TabItem>
-                    <TabItem Header="Activiteit">
+
+                    <TabItem Header="Activiteiten">
                     </TabItem>
-                    <TabItem Header="Product">
+
+                    <TabItem Header="Producten">
                     </TabItem>
                 </TabControl>
             </TabItem>
@@ -69,6 +88,7 @@
                 <TabControl>
                     <TabItem Header="DBC's">
                     </TabItem>
+
                     <TabItem Header="Profielen">
                     </TabItem>
                 </TabControl>
