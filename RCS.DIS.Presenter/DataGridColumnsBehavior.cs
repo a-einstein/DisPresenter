@@ -17,12 +17,14 @@ namespace RCS.DIS.Presenter
                                                 typeof(DataGridColumnsBehavior),
                                                 new UIPropertyMetadata(null, BindableColumnsPropertyChanged));
 
-        /// <summary>Collection to store collection change handlers - to be able to unsubscribe later.</summary>
-        private static readonly Dictionary<DataGrid, NotifyCollectionChangedEventHandler> _handlers;
+        /// <summary>
+        /// Collection to store collection change handlers - to be able to unsubscribe later.
+        /// </summary>
+        private static readonly Dictionary<DataGrid, NotifyCollectionChangedEventHandler> collectionChangedHandlers;
 
         static DataGridColumnsBehavior()
         {
-            _handlers = new Dictionary<DataGrid, NotifyCollectionChangedEventHandler>();
+            collectionChangedHandlers = new Dictionary<DataGrid, NotifyCollectionChangedEventHandler>();
         }
 
         private static void BindableColumnsPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
@@ -30,22 +32,26 @@ namespace RCS.DIS.Presenter
             DataGrid dataGrid = source as DataGrid;
 
             ObservableCollection<DataGridColumn> oldColumns = e.OldValue as ObservableCollection<DataGridColumn>;
+
             if (oldColumns != null)
             {
                 // Remove all columns.
                 dataGrid.Columns.Clear();
 
                 // Unsubscribe from old collection.
-                NotifyCollectionChangedEventHandler h;
-                if (_handlers.TryGetValue(dataGrid, out h))
+                NotifyCollectionChangedEventHandler handler;
+
+                if (collectionChangedHandlers.TryGetValue(dataGrid, out handler))
                 {
-                    oldColumns.CollectionChanged -= h;
-                    _handlers.Remove(dataGrid);
+                    oldColumns.CollectionChanged -= handler;
+                    collectionChangedHandlers.Remove(dataGrid);
                 }
             }
 
             ObservableCollection<DataGridColumn> newColumns = e.NewValue as ObservableCollection<DataGridColumn>;
+
             dataGrid.Columns.Clear();
+
             if (newColumns != null)
             {
                 // Add columns from this source.
@@ -53,34 +59,37 @@ namespace RCS.DIS.Presenter
                     dataGrid.Columns.Add(column);
 
                 // Subscribe to future changes.
-                NotifyCollectionChangedEventHandler h = (_, ne) => OnCollectionChanged(ne, dataGrid);
-                _handlers[dataGrid] = h;
-                newColumns.CollectionChanged += h;
+                NotifyCollectionChangedEventHandler handler = (_, eventArgs) => OnCollectionChanged(eventArgs, dataGrid);
+                collectionChangedHandlers[dataGrid] = handler;
+                newColumns.CollectionChanged += handler;
             }
         }
 
-        static void OnCollectionChanged(NotifyCollectionChangedEventArgs ne, DataGrid dataGrid)
+        static void OnCollectionChanged(NotifyCollectionChangedEventArgs eventArgs, DataGrid dataGrid)
         {
-            switch (ne.Action)
+            switch (eventArgs.Action)
             {
                 case NotifyCollectionChangedAction.Reset:
                     dataGrid.Columns.Clear();
-                    foreach (DataGridColumn column in ne.NewItems)
+                    foreach (DataGridColumn column in eventArgs.NewItems)
                         dataGrid.Columns.Add(column);
                     break;
+
                 case NotifyCollectionChangedAction.Add:
-                    foreach (DataGridColumn column in ne.NewItems)
+                    foreach (DataGridColumn column in eventArgs.NewItems)
                         dataGrid.Columns.Add(column);
                     break;
+
                 case NotifyCollectionChangedAction.Move:
-                    dataGrid.Columns.Move(ne.OldStartingIndex, ne.NewStartingIndex);
+                    dataGrid.Columns.Move(eventArgs.OldStartingIndex, eventArgs.NewStartingIndex);
                     break;
+
                 case NotifyCollectionChangedAction.Remove:
-                    foreach (DataGridColumn column in ne.OldItems)
+                    foreach (DataGridColumn column in eventArgs.OldItems)
                         dataGrid.Columns.Remove(column);
                     break;
                 case NotifyCollectionChangedAction.Replace:
-                    dataGrid.Columns[ne.NewStartingIndex] = ne.NewItems[0] as DataGridColumn;
+                    dataGrid.Columns[eventArgs.NewStartingIndex] = eventArgs.NewItems[0] as DataGridColumn;
                     break;
             }
         }
@@ -90,9 +99,9 @@ namespace RCS.DIS.Presenter
             element.SetValue(BindableColumnsProperty, value);
         }
 
-        public static ObservableCollection<DataGridColumn> GetBindableColumns(DependencyObject element)
+        public static ObservableCollection<DataGridColumn> GetBindableColumns(DependencyObject dataGrid)
         {
-            return (ObservableCollection<DataGridColumn>)element.GetValue(BindableColumnsProperty);
+            return (ObservableCollection<DataGridColumn>)dataGrid.GetValue(BindableColumnsProperty);
         }
     }
 }
