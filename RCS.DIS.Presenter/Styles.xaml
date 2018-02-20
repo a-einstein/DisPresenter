@@ -4,7 +4,7 @@
     xmlns:local="clr-namespace:RCS.DIS.Presenter">
 
     <Thickness x:Key="StandardMargin">2</Thickness>
-    
+
     <Style TargetType="TextBlock">
         <Setter Property="Margin" Value="{StaticResource StandardMargin}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -33,5 +33,13 @@
     <Style TargetType="DataGrid">
         <Setter Property="Margin" Value="{StaticResource StandardMargin}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="DataGridColumnHeaderReadOnlyStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="IsHitTestVisible" Value="False"/>
+    </Style>
+
+    <Style x:Key="DataGridRowReadOnlyStyle" TargetType="DataGridRow">
+        <Setter Property="IsHitTestVisible" Value="False"/>
     </Style>
 </ResourceDictionary>

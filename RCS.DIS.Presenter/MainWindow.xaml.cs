@@ -15,6 +15,8 @@ namespace RCS.DIS.Presenter
 
             // TODO add enablement.
             DiagnosesSearchCommand = new DelegateCommand(SearchDiagnoses);
+
+            OpenDiagnosesCommand = new DelegateCommand(OpenDiagnoses);
         }
 
         // TODO Should make this a separate view + viewmodel and use generic naming again..
@@ -41,13 +43,29 @@ namespace RCS.DIS.Presenter
         {
             var number = new RetrieveServiceClient().DiagnoseOmschrijvingContainsNumber(DiagnosesSearchString);
 
-            if (number > 100)
+            if (number == 0 || number > 100)
                 DiagnosesMessage = $"Found {number}. Please refine your query.";
             else
             {
                 DiagnosesMessage = $"Found {number}. Please select a diagnose.";
                 Diagnoses = new RetrieveServiceClient().DiagnoseOmschrijvingContainsEntities(DiagnosesSearchString);
             }
+        }
+
+        public static readonly DependencyProperty OpenDiagnosesCommandProperty =
+            DependencyProperty.Register("OpenDiagnosesCommand", typeof(ICommand), typeof(MainWindow));
+
+        public ICommand OpenDiagnosesCommand
+        {
+            get { return (ICommand)GetValue(OpenDiagnosesCommandProperty); }
+            set { SetValue(OpenDiagnosesCommandProperty, value); }
+        }
+
+        // Note this only works in codebehind.
+        // Doing so with just bindings seems at least awkward, even with a CommandParameter.
+        private void OpenDiagnoses()
+        {
+            CriteriaTabControl.SelectedItem = DiagnosesTab;
         }
 
         public static readonly DependencyProperty DiagnosesMessageProperty =
