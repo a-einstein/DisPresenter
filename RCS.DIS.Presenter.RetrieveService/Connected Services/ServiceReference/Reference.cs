@@ -142,6 +142,12 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IRetrieveService")]
     public interface IRetrieveService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/Versies", ReplyAction="http://tempuri.org/IRetrieveService/VersiesResponse")]
+        string[] Versies();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/Versies", ReplyAction="http://tempuri.org/IRetrieveService/VersiesResponse")]
+        System.Threading.Tasks.Task<string[]> VersiesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DiagnoseOmschrijvingContainsNumber", ReplyAction="http://tempuri.org/IRetrieveService/DiagnoseOmschrijvingContainsNumberResponse")]
         int DiagnoseOmschrijvingContainsNumber(string searchString);
         
@@ -180,6 +186,14 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         
         public RetrieveServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string[] Versies() {
+            return base.Channel.Versies();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> VersiesAsync() {
+            return base.Channel.VersiesAsync();
         }
         
         public int DiagnoseOmschrijvingContainsNumber(string searchString) {

@@ -23,11 +23,12 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <!--TODO Collect versions.-->
                             <TextBlock Grid.Row="0" Text="Versie" Width="100"/>
-                            <ComboBox Grid.Row="1" Width="100 "/>
+                            <!--Select the first element by IsSynchronizedWithCurrentItem. Currently there is even only one.-->
+                            <ComboBox Grid.Row="1" Width="100" ItemsSource="{Binding Versies}" IsSynchronizedWithCurrentItem="True"/>
 
                             <TextBlock Grid.Row="2" Text="Diagnose" Width="100"/>
+                            <!--Use the button to return to the selection tab easily.-->
                             <Button Grid.Row="3" Command="{Binding OpenDiagnosesCommand}">
                                 <DataGrid  ItemsSource="{Binding SelectedDiagnoseSource}" AutoGenerateColumns="False" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}">
                                     <!--TODO Is this bindable to the one of selection grid?-->

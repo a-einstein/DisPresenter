@@ -17,7 +17,20 @@ namespace RCS.DIS.Presenter
             DiagnosesSearchCommand = new DelegateCommand(SearchDiagnoses);
 
             OpenDiagnosesCommand = new DelegateCommand(OpenDiagnoses);
+
+            Versies = new RetrieveServiceClient().Versies();
         }
+
+        #region Versies
+        public static readonly DependencyProperty VersiesProperty =
+            DependencyProperty.Register("Versies", typeof(string[]), typeof(MainWindow));
+
+        public string[] Versies
+        {
+            get { return (string[])GetValue(VersiesProperty); }
+            set { SetValue(VersiesProperty, value); }
+        }
+        #endregion
 
         // TODO Should make this a separate view + viewmodel and use generic naming again..
         #region Diagnoses
