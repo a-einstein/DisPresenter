@@ -31,17 +31,7 @@
                                 <TextBlock Text="Diagnose" Width="100"/>
                                 <!--Use the button to return to the selection tab easily.-->
                                 <Button Grid.Row="3" Command="{Binding OpenEntitiesCommand}">
-                                    <DataGrid  ItemsSource="{Binding SelectedSource}" AutoGenerateColumns="False" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}">
-                                        <!--TODO Is this bindable to the one of selection grid?-->
-                                        <DataGrid.Columns>
-                                            <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>
-                                            <DataGridTextColumn Binding="{Binding SpecialismeCode}" Header="Specialisme"/>
-                                            <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
-                                            <DataGridTextColumn Binding="{Binding Peildatum}" Header="Peildatum"/>
-                                            <DataGridTextColumn Binding="{Binding Bestandsdatum}" Header="Bestandsdatum"/>
-                                            <DataGridTextColumn Binding="{Binding Versie}" Header="Versie"/>
-                                        </DataGrid.Columns>
-                                    </DataGrid>
+                                    <DataGrid ItemsSource="{Binding SelectedSource}" AutoGenerateColumns="False" local:DataGridColumnsBehavior.BindableColumns="{Binding FilterGridColumns}" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}"/>
                                 </Button>
                             </Grid>
                         </Grid>

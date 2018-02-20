@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Input;
 using Prism.Commands;
+using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace RCS.DIS.Presenter
 {
@@ -23,6 +25,30 @@ namespace RCS.DIS.Presenter
 
         private OmschrijvingContainsNumberDelegate NumberDelegate;
         private OmschrijvingContainsEntitiesDelegate EntitiesDelegate;
+
+        public static readonly DependencyProperty SelectorGridColumnsProperty =
+            DependencyProperty.Register(nameof(SelectorGridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(TableSelectorViewModel<entityType>));
+
+        /// <summary>
+        /// Note the columns cannot be shared. Set 2 equal collections.
+        /// </summary>
+        public ObservableCollection<DataGridColumn> SelectorGridColumns
+        {
+            get { return (ObservableCollection<DataGridColumn>)GetValue(SelectorGridColumnsProperty); }
+            set { SetValue(SelectorGridColumnsProperty, value); }
+        }
+
+        public static readonly DependencyProperty FilterGridColumnsProperty =
+            DependencyProperty.Register(nameof(FilterGridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(TableSelectorViewModel<entityType>));
+
+        /// <summary>
+        /// Note the columns cannot be shared. Set 2 equal collections.
+        /// </summary>
+        public ObservableCollection<DataGridColumn> FilterGridColumns
+        {
+            get { return (ObservableCollection<DataGridColumn>)GetValue(FilterGridColumnsProperty); }
+            set { SetValue(FilterGridColumnsProperty, value); }
+        }
 
         public static readonly DependencyProperty SearchStringProperty =
             DependencyProperty.Register(nameof(SearchString), typeof(string), typeof(TableSelectorViewModel<entityType>));

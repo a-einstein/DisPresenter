@@ -8,7 +8,7 @@
     mc:Ignorable="d" 
     d:DesignHeight="300" d:DesignWidth="300"
     >
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -27,16 +27,7 @@
         <TextBlock Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Message}" FontWeight="Bold" />
 
         <!--TODO Solve scrollbar visibility.-->
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding Selected, Mode=OneWayToSource}">
-            <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>
-                <DataGridTextColumn Binding="{Binding SpecialismeCode}" Header="Specialisme"/>
-                <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
-                <DataGridTextColumn Binding="{Binding Peildatum}" Header="Peildatum"/>
-                <DataGridTextColumn Binding="{Binding Bestandsdatum}" Header="Bestandsdatum"/>
-                <DataGridTextColumn Binding="{Binding Versie}" Header="Versie"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" local:DataGridColumnsBehavior.BindableColumns="{Binding SelectorGridColumns}" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding Selected, Mode=OneWayToSource}"/>
     </Grid>
 </UserControl>
