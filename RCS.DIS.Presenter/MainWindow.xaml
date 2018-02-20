@@ -30,8 +30,8 @@
                             <Grid Grid.Row="2" Name="DiagnoseFilterArea">
                                 <TextBlock Text="Diagnose" Width="100"/>
                                 <!--Use the button to return to the selection tab easily.-->
-                                <Button Grid.Row="3" Command="{Binding OpenDiagnosesCommand}">
-                                    <DataGrid  ItemsSource="{Binding SelectedDiagnoseSource}" AutoGenerateColumns="False" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}">
+                                <Button Grid.Row="3" Command="{Binding OpenEntitiesCommand}">
+                                    <DataGrid  ItemsSource="{Binding SelectedSource}" AutoGenerateColumns="False" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}">
                                         <!--TODO Is this bindable to the one of selection grid?-->
                                         <DataGrid.Columns>
                                             <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>

@@ -11,9 +11,11 @@ namespace RCS.DIS.Presenter
 
             DataContext = this;
  
-            Versies = new RetrieveServiceClient().Versies();
+            var retrieveServiceClient = new RetrieveServiceClient();
 
-            var tableSelectorViewModel = new TableSelectorViewModel();
+            Versies = retrieveServiceClient.Versies();
+
+            var tableSelectorViewModel = new TableSelectorViewModel<Diagnose>(retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities);
             (DiagnosesTab.Content as TableSelectorView).DataContext = tableSelectorViewModel;
             DiagnoseFilterArea.DataContext = tableSelectorViewModel;
         }

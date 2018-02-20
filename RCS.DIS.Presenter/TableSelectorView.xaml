@@ -19,15 +19,15 @@
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock  Text="Omschrijving contains"/>
-            <TextBox Width="200" Text="{Binding DiagnosesSearchString}"/>
+            <TextBox Width="200" Text="{Binding SearchString}"/>
             <!--TODO The IsDefault does not work, probably because of the TextBox.-->
-            <Button Content="Search diagnoses" Width="100" Command="{Binding DiagnosesSearchCommand}" IsDefault="True"/>
+            <Button Content="Search diagnoses" Width="100" Command="{Binding SearchCommand}" IsDefault="True"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding DiagnosesMessage}" FontWeight="Bold" />
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding Message}" FontWeight="Bold" />
 
         <!--TODO Solve scrollbar visibility.-->
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Diagnoses}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding SelectedDiagnose, Mode=OneWayToSource}">
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding Selected, Mode=OneWayToSource}">
             <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>

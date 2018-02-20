@@ -5,105 +5,112 @@ using Prism.Commands;
 
 namespace RCS.DIS.Presenter
 {
-    public class TableSelectorViewModel : DependencyObject
+    public class TableSelectorViewModel<entityType> : DependencyObject
     {
-        public TableSelectorViewModel()
+        public delegate int OmschrijvingContainsNumberDelegate(string SearchString);
+        public delegate entityType[] OmschrijvingContainsEntitiesDelegate(string SearchString);
+
+        public TableSelectorViewModel(OmschrijvingContainsNumberDelegate numberDelegate, OmschrijvingContainsEntitiesDelegate entitiesDelegate)
         {
+            NumberDelegate = numberDelegate;
+            EntitiesDelegate = entitiesDelegate;
+
             // TODO add enablement.
-            DiagnosesSearchCommand = new DelegateCommand(SearchDiagnoses);
+            SearchCommand = new DelegateCommand(Search);
 
-            OpenDiagnosesCommand = new DelegateCommand(OpenDiagnoses);
+            OpenEntitiesCommand = new DelegateCommand(OpenEntities);
         }
 
-        #region Diagnoses
-        public static readonly DependencyProperty DiagnosesSearchStringProperty =
-            DependencyProperty.Register(nameof(DiagnosesSearchString), typeof(string), typeof(TableSelectorViewModel));
+        private OmschrijvingContainsNumberDelegate NumberDelegate;
+        private OmschrijvingContainsEntitiesDelegate EntitiesDelegate;
 
-        public string DiagnosesSearchString
+        public static readonly DependencyProperty SearchStringProperty =
+            DependencyProperty.Register(nameof(SearchString), typeof(string), typeof(TableSelectorViewModel<entityType>));
+
+        public string SearchString
         {
-            get { return (string)GetValue(DiagnosesSearchStringProperty); }
-            set { SetValue(DiagnosesSearchStringProperty, value); }
+            get { return (string)GetValue(SearchStringProperty); }
+            set { SetValue(SearchStringProperty, value); }
         }
 
-        public static readonly DependencyProperty DiagnosesSearchCommandProperty =
-            DependencyProperty.Register(nameof(DiagnosesSearchCommand), typeof(ICommand), typeof(TableSelectorViewModel));
+        public static readonly DependencyProperty SearchCommandProperty =
+            DependencyProperty.Register(nameof(SearchCommand), typeof(ICommand), typeof(TableSelectorViewModel<entityType>));
 
-        public ICommand DiagnosesSearchCommand
+        public ICommand SearchCommand
         {
-            get { return (ICommand)GetValue(DiagnosesSearchCommandProperty); }
-            set { SetValue(DiagnosesSearchCommandProperty, value); }
+            get { return (ICommand)GetValue(SearchCommandProperty); }
+            set { SetValue(SearchCommandProperty, value); }
         }
 
-        public void SearchDiagnoses()
+        public void Search()
         {
-            var number = new RetrieveServiceClient().DiagnoseOmschrijvingContainsNumber(DiagnosesSearchString);
+            var number = NumberDelegate(SearchString);
 
             if (number == 0 || number > 100)
-                DiagnosesMessage = $"Found {number}. Please refine your query.";
+                Message = $"Found {number}. Please refine your query.";
             else
             {
-                DiagnosesMessage = $"Found {number}. Please select a diagnose.";
-                Diagnoses = new RetrieveServiceClient().DiagnoseOmschrijvingContainsEntities(DiagnosesSearchString);
+                Message = $"Found {number}. Please select a diagnose.";
+                Entities = EntitiesDelegate(SearchString);
             }
         }
 
-        public static readonly DependencyProperty OpenDiagnosesCommandProperty =
-            DependencyProperty.Register("OpenDiagnosesCommand", typeof(ICommand), typeof(TableSelectorViewModel));
+        public static readonly DependencyProperty OpenEntitiesCommandProperty =
+            DependencyProperty.Register(nameof(OpenEntitiesCommand), typeof(ICommand), typeof(TableSelectorViewModel<entityType>));
 
-        public ICommand OpenDiagnosesCommand
+        public ICommand OpenEntitiesCommand
         {
-            get { return (ICommand)GetValue(OpenDiagnosesCommandProperty); }
-            set { SetValue(OpenDiagnosesCommandProperty, value); }
+            get { return (ICommand)GetValue(OpenEntitiesCommandProperty); }
+            set { SetValue(OpenEntitiesCommandProperty, value); }
         }
 
         // Note this only works in codebehind.
         // Doing so with just bindings seems at least awkward, even with a CommandParameter.
-        private void OpenDiagnoses()
+        public void OpenEntities()
         {
             //CriteriaTabControl.SelectedItem = DiagnosesTab;
         }
 
-        public static readonly DependencyProperty DiagnosesMessageProperty =
-            DependencyProperty.Register(nameof(DiagnosesMessage), typeof(string), typeof(TableSelectorViewModel), new PropertyMetadata("Enter part of the omschrijving to look for."));
+        public static readonly DependencyProperty MessageProperty =
+            DependencyProperty.Register(nameof(Message), typeof(string), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata("Enter part of the omschrijving to look for."));
 
-        public string DiagnosesMessage
+        public string Message
         {
-            get { return (string)GetValue(DiagnosesMessageProperty); }
-            set { SetValue(DiagnosesMessageProperty, value); }
+            get { return (string)GetValue(MessageProperty); }
+            set { SetValue(MessageProperty, value); }
         }
 
-        public static readonly DependencyProperty DiagnosesProperty =
-            DependencyProperty.Register(nameof(Diagnoses), typeof(Diagnose[]), typeof(TableSelectorViewModel), new PropertyMetadata(new Diagnose[0]));
+        public static readonly DependencyProperty EntitiesProperty =
+            DependencyProperty.Register(nameof(Entities), typeof(entityType[]), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata(new entityType[0]));
 
-        public Diagnose[] Diagnoses
+        public entityType[] Entities
         {
-            get { return (Diagnose[])GetValue(DiagnosesProperty); }
-            set { SetValue(DiagnosesProperty, value); }
+            get { return (entityType[])GetValue(EntitiesProperty); }
+            set { SetValue(EntitiesProperty, value); }
         }
 
-        public static readonly DependencyProperty SelectedDiagnoseProperty =
-            DependencyProperty.Register(nameof(SelectedDiagnose), typeof(Diagnose), typeof(TableSelectorViewModel), new PropertyMetadata(new PropertyChangedCallback(SetSelectedDiagnoseSource)));
+        public static readonly DependencyProperty SelectedProperty =
+            DependencyProperty.Register(nameof(Selected), typeof(Diagnose), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata(new PropertyChangedCallback(SetSelectedSource)));
 
-        public Diagnose SelectedDiagnose
+        public entityType Selected
         {
-            get { return (Diagnose)GetValue(SelectedDiagnoseProperty); }
-            set { SetValue(SelectedDiagnoseProperty, value); }
+            get { return (entityType)GetValue(SelectedProperty); }
+            set { SetValue(SelectedProperty, value); }
         }
 
-        private static void SetSelectedDiagnoseSource(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void SetSelectedSource(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var viewModel = d as TableSelectorViewModel;
-            viewModel.SelectedDiagnoseSource = new Diagnose[] { viewModel.SelectedDiagnose };
+            var viewModel = d as TableSelectorViewModel<entityType>;
+            viewModel.SelectedSource = new entityType[] { viewModel.Selected };
         }
 
-        public static readonly DependencyProperty SelectedDiagnoseSourceProperty =
-            DependencyProperty.Register(nameof(SelectedDiagnoseSource), typeof(Diagnose[]), typeof(TableSelectorViewModel));
+        public static readonly DependencyProperty SelectedSourceProperty =
+            DependencyProperty.Register(nameof(SelectedSource), typeof(entityType[]), typeof(TableSelectorViewModel<entityType>));
 
-        public Diagnose[] SelectedDiagnoseSource
+        public entityType[] SelectedSource
         {
-            get { return (Diagnose[])GetValue(SelectedDiagnoseSourceProperty); }
-            set { SetValue(SelectedDiagnoseSourceProperty, value); }
+            get { return (entityType[])GetValue(SelectedSourceProperty); }
+            set { SetValue(SelectedSourceProperty, value); }
         }
-        #endregion
     }
 }
