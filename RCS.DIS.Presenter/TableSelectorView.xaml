@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="RCS.DIS.Presenter.TableSelectorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:RCS.DIS.Presenter"
+    mc:Ignorable="d" 
+    d:DesignHeight="300" d:DesignWidth="300"
+    >
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock  Text="Omschrijving contains"/>
+            <TextBox Width="200" Text="{Binding DiagnosesSearchString}"/>
+            <!--TODO The IsDefault does not work, probably because of the TextBox.-->
+            <Button Content="Search diagnoses" Width="100" Command="{Binding DiagnosesSearchCommand}" IsDefault="True"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding DiagnosesMessage}" FontWeight="Bold" />
+
+        <!--TODO Solve scrollbar visibility.-->
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Diagnoses}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding SelectedDiagnose, Mode=OneWayToSource}">
+            <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>
+                <DataGridTextColumn Binding="{Binding SpecialismeCode}" Header="Specialisme"/>
+                <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
+                <DataGridTextColumn Binding="{Binding Peildatum}" Header="Peildatum"/>
+                <DataGridTextColumn Binding="{Binding Bestandsdatum}" Header="Bestandsdatum"/>
+                <DataGridTextColumn Binding="{Binding Versie}" Header="Versie"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

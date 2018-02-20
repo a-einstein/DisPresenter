@@ -27,55 +27,28 @@
                             <!--Select the first element by IsSynchronizedWithCurrentItem. Currently there is even only one.-->
                             <ComboBox Grid.Row="1" Width="100" ItemsSource="{Binding Versies}" IsSynchronizedWithCurrentItem="True"/>
 
-                            <TextBlock Grid.Row="2" Text="Diagnose" Width="100"/>
-                            <!--Use the button to return to the selection tab easily.-->
-                            <Button Grid.Row="3" Command="{Binding OpenDiagnosesCommand}">
-                                <DataGrid  ItemsSource="{Binding SelectedDiagnoseSource}" AutoGenerateColumns="False" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}">
-                                    <!--TODO Is this bindable to the one of selection grid?-->
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>
-                                        <DataGridTextColumn Binding="{Binding SpecialismeCode}" Header="Specialisme"/>
-                                        <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
-                                        <DataGridTextColumn Binding="{Binding Peildatum}" Header="Peildatum"/>
-                                        <DataGridTextColumn Binding="{Binding Bestandsdatum}" Header="Bestandsdatum"/>
-                                        <DataGridTextColumn Binding="{Binding Versie}" Header="Versie"/>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </Button>
+                            <Grid Grid.Row="2" Name="DiagnoseFilterArea">
+                                <TextBlock Text="Diagnose" Width="100"/>
+                                <!--Use the button to return to the selection tab easily.-->
+                                <Button Grid.Row="3" Command="{Binding OpenDiagnosesCommand}">
+                                    <DataGrid  ItemsSource="{Binding SelectedDiagnoseSource}" AutoGenerateColumns="False" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}">
+                                        <!--TODO Is this bindable to the one of selection grid?-->
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>
+                                            <DataGridTextColumn Binding="{Binding SpecialismeCode}" Header="Specialisme"/>
+                                            <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
+                                            <DataGridTextColumn Binding="{Binding Peildatum}" Header="Peildatum"/>
+                                            <DataGridTextColumn Binding="{Binding Bestandsdatum}" Header="Bestandsdatum"/>
+                                            <DataGridTextColumn Binding="{Binding Versie}" Header="Versie"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Button>
+                            </Grid>
                         </Grid>
                     </TabItem>
 
                     <TabItem Header="Diagnoses" Name="DiagnosesTab">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                <TextBlock  Text="Omschrijving contains"/>
-                                <TextBox Width="200" Text="{Binding DiagnosesSearchString}"/>
-                                <!--TODO The IsDefault does not work, probably because of the TextBox.-->
-                                <Button Content="Search diagnoses" Width="100" Command="{Binding DiagnosesSearchCommand}" IsDefault="True"/>
-                            </StackPanel>
-
-                            <TextBlock Grid.Row="1" Grid.ColumnSpan="3" Text="{Binding DiagnosesMessage}" FontWeight="Bold" />
-
-                            <!--TODO Solve scrollbar visibility.-->
-                            <DataGrid Grid.Row="2" ItemsSource="{Binding Diagnoses}" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding SelectedDiagnose, Mode=OneWayToSource}">
-                                <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Binding="{Binding DiagnoseCode}" Header="Diagnose"/>
-                                    <DataGridTextColumn Binding="{Binding SpecialismeCode}" Header="Specialisme"/>
-                                    <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
-                                    <DataGridTextColumn Binding="{Binding Peildatum}" Header="Peildatum"/>
-                                    <DataGridTextColumn Binding="{Binding Bestandsdatum}" Header="Bestandsdatum"/>
-                                    <DataGridTextColumn Binding="{Binding Versie}" Header="Versie"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
+                        <local:TableSelectorView/>
                     </TabItem>
 
                     <TabItem Header="Specialismes">
