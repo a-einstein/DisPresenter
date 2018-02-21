@@ -65,6 +65,9 @@
     <None Include="Connected Services\ServiceReference\RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgactiviteit.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference\RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgproduct.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\RetrieveService.wsdl" />
     <None Include="Connected Services\ServiceReference\RetrieveService.xsd">
       <SubType>Designer</SubType>

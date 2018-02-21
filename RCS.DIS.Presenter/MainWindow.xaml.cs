@@ -14,12 +14,11 @@ namespace RCS.DIS.Presenter
         {
             InitializeComponent();
 
-            DataContext = this;
-
             SetVersiesView();
             SetDiagnosesView();
             SetSpecialismesView();
             SetZorgactiviteitsView();
+            SetZorgproductsView();
         }
 
         RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
@@ -28,37 +27,22 @@ namespace RCS.DIS.Presenter
         #region Versies
         private void SetVersiesView()
         {
-            Versies = retrieveServiceClient.Versies();
-        }
+            var viewModel = new VersieFilterAreaViewModel();
+            viewModel.Versies = retrieveServiceClient.Versies();
 
-        public static readonly DependencyProperty VersiesProperty =
-            DependencyProperty.Register(nameof(Versies), typeof(string[]), typeof(MainWindow));
-
-        public string[] Versies
-        {
-            get { return (string[])GetValue(VersiesProperty); }
-            set { SetValue(VersiesProperty, value); }
-        }
-
-        public static readonly DependencyProperty VersieSelectedProperty =
-            DependencyProperty.Register(nameof(VersieSelected), typeof(string), typeof(MainWindow));
-
-        public string VersieSelected
-        {
-            get { return (string)GetValue(VersieSelectedProperty); }
-            set { SetValue(VersieSelectedProperty, value); }
+            VersieFilterArea.DataContext = viewModel;
         }
         #endregion
 
         #region Diagnoses
         private void SetDiagnosesView()
         {
-            var tableSelectorViewModel = new TableSelectorViewModel<Diagnose>
+            var viewModel = new TableSelectorViewModel<Diagnose>
                 ("Diagnose", retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
-                { SelectorGridColumns = DiagnoseGridColumns(), FilterGridColumns = DiagnoseGridColumns() };
+            { SelectorGridColumns = DiagnoseGridColumns(), FilterGridColumns = DiagnoseGridColumns() };
 
-            DiagnosesTab.DataContext = tableSelectorViewModel;
-            DiagnoseFilterArea.DataContext = tableSelectorViewModel;
+            DiagnosesTab.DataContext = viewModel;
+            DiagnoseFilterArea.DataContext = viewModel;
         }
 
         ObservableCollection<DataGridColumn> DiagnoseGridColumns()
@@ -80,12 +64,12 @@ namespace RCS.DIS.Presenter
         #region Specialismes
         private void SetSpecialismesView()
         {
-            var tableSelectorViewModel = new TableSelectorViewModel<Specialisme>
+            var viewModel = new TableSelectorViewModel<Specialisme>
                 ("Specialisme", retrieveServiceClient.SpecialismeOmschrijvingContainsNumber, retrieveServiceClient.SpecialismeOmschrijvingContainsEntities)
             { SelectorGridColumns = SpecialismeGridColumns(), FilterGridColumns = SpecialismeGridColumns() };
 
-            SpecialismesTab.DataContext = tableSelectorViewModel;
-            SpecialismeFilterArea.DataContext = tableSelectorViewModel;
+            SpecialismesTab.DataContext = viewModel;
+            SpecialismeFilterArea.DataContext = viewModel;
         }
 
         ObservableCollection<DataGridColumn> SpecialismeGridColumns()
@@ -106,20 +90,50 @@ namespace RCS.DIS.Presenter
         #region Zorgactiviteiten
         private void SetZorgactiviteitsView()
         {
-            var tableSelectorViewModel = new TableSelectorViewModel<Zorgactiviteit>
+            var viewModel = new TableSelectorViewModel<Zorgactiviteit>
                 ("Zorgactiviteit", retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumber, retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntities)
             { SelectorGridColumns = ZorgactiviteitGridColumns(), FilterGridColumns = ZorgactiviteitGridColumns() };
 
-            ZorgactiviteitenTab.DataContext = tableSelectorViewModel;
-            ZorgactiviteitFilterArea.DataContext = tableSelectorViewModel;
+            ZorgactiviteitenTab.DataContext = viewModel;
+            ZorgactiviteitFilterArea.DataContext = viewModel;
         }
 
         ObservableCollection<DataGridColumn> ZorgactiviteitGridColumns()
         {
             var columns = new ObservableCollection<DataGridColumn>
             {
-                new DataGridTextColumn() { Binding= new Binding("ZorgactiviteitCode"), Header="Zorgactiviteit" },
+                new DataGridTextColumn() { Binding= new Binding("ZorgactiviteitCode"), Header="Activiteit" },
                 new DataGridTextColumn() { Binding= new Binding("Omschrijving"), Header="Omschrijving" },
+                new DataGridTextColumn() { Binding= new Binding("ZorgprofielklasseCode"), Header="Klasse"},
+                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
+                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
+                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
+            };
+
+            return columns;
+        }
+        #endregion
+
+        #region Zorgproducten
+        private void SetZorgproductsView()
+        {
+            var viewModel = new TableSelectorViewModel<Zorgproduct>
+                ("Zorgproduct", retrieveServiceClient.ZorgproductOmschrijvingContainsNumber, retrieveServiceClient.ZorgproductOmschrijvingContainsEntities)
+            { SelectorGridColumns = ZorgproductGridColumns(), FilterGridColumns = ZorgproductGridColumns() };
+
+            ZorgproductenTab.DataContext = viewModel;
+            ZorgproductFilterArea.DataContext = viewModel;
+        }
+
+        ObservableCollection<DataGridColumn> ZorgproductGridColumns()
+        {
+            var columns = new ObservableCollection<DataGridColumn>
+            {
+                new DataGridTextColumn() { Binding= new Binding("ZorgproductCode"), Header="Product" },
+                new DataGridTextColumn() { Binding= new Binding("OmschrijvingConsument"), Header="Consumentenomschrijving" },
+                new DataGridTextColumn() { Binding= new Binding("OmschrijvingLatijn"), Header="Latijnse omschrijving" },
+                new DataGridTextColumn() { Binding= new Binding("DeclaratiecodeVerzekerd"), Header="Verzekerde code"},
+                new DataGridTextColumn() { Binding= new Binding("DeclaratiecodeOnverzekerd"), Header="Onverzekerde code"},
                 new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
                 new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
                 new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }

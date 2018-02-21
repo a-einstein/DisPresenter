@@ -50,4 +50,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Zorgactiviteit" nillable="true" type="tns:Zorgactiviteit" />
+  <xs:complexType name="ArrayOfZorgproduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Zorgproduct" nillable="true" type="tns:Zorgproduct" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZorgproduct" nillable="true" type="tns:ArrayOfZorgproduct" />
+  <xs:complexType name="Zorgproduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bestandsdatum" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DeclaratiecodeOnverzekerd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeclaratiecodeVerzekerd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OmschrijvingConsument" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OmschrijvingLatijn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Peildatum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Versie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZorgproductCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Zorgproduct" nillable="true" type="tns:Zorgproduct" />
 </xs:schema>

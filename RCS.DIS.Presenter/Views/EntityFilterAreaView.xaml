@@ -8,9 +8,9 @@
     mc:Ignorable="d" 
     d:DesignHeight="300" d:DesignWidth="300"
     >
-    
-    <StackPanel Grid.Row="2">
-        <TextBlock Text="{Binding EntityName}" Width="100"/>
+
+    <StackPanel Grid.Row="2" Margin="{StaticResource BlockMargin}">
+        <TextBlock Text="{Binding EntityName}" Style="{StaticResource TextBlockEmphasisStyle}"/>
 
         <!--Use the button to return to the selection tab easily.-->
         <Button Command="{Binding OpenEntitiesCommand}">

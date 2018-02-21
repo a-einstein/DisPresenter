@@ -4,11 +4,16 @@
     xmlns:local="clr-namespace:RCS.DIS.Presenter">
 
     <Thickness x:Key="StandardMargin">2</Thickness>
+    <Thickness x:Key="BlockMargin">5,5,5,0</Thickness>
 
     <Style TargetType="TextBlock">
         <Setter Property="Margin" Value="{StaticResource StandardMargin}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="TextBlockEmphasisStyle" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Bold"/>
     </Style>
 
     <Style TargetType="TextBox">

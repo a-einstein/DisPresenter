@@ -98,4 +98,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ZorgproductOmschrijvingContainsNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZorgproductOmschrijvingContainsNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ZorgproductOmschrijvingContainsNumberResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZorgproductOmschrijvingContainsEntities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZorgproductOmschrijvingContainsEntitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="ZorgproductOmschrijvingContainsEntitiesResult" nillable="true" type="q5:ArrayOfZorgproduct" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -1,9 +1,8 @@
-﻿using RCS.DIS.Presenter.RetrieveService.ServiceReference;
-using System.Windows;
-using System.Windows.Input;
-using Prism.Commands;
-using System.Windows.Controls;
+﻿using Prism.Commands;
 using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace RCS.DIS.Presenter.ViewModels
 {

@@ -372,6 +372,163 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Zorgproduct", Namespace="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class Zorgproduct : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> BestandsdatumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeclaratiecodeOnverzekerdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DeclaratiecodeVerzekerdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OmschrijvingConsumentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OmschrijvingLatijnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime PeildatumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VersieField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ZorgproductCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Bestandsdatum {
+            get {
+                return this.BestandsdatumField;
+            }
+            set {
+                if ((this.BestandsdatumField.Equals(value) != true)) {
+                    this.BestandsdatumField = value;
+                    this.RaisePropertyChanged("Bestandsdatum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeclaratiecodeOnverzekerd {
+            get {
+                return this.DeclaratiecodeOnverzekerdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeclaratiecodeOnverzekerdField, value) != true)) {
+                    this.DeclaratiecodeOnverzekerdField = value;
+                    this.RaisePropertyChanged("DeclaratiecodeOnverzekerd");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DeclaratiecodeVerzekerd {
+            get {
+                return this.DeclaratiecodeVerzekerdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DeclaratiecodeVerzekerdField, value) != true)) {
+                    this.DeclaratiecodeVerzekerdField = value;
+                    this.RaisePropertyChanged("DeclaratiecodeVerzekerd");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OmschrijvingConsument {
+            get {
+                return this.OmschrijvingConsumentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OmschrijvingConsumentField, value) != true)) {
+                    this.OmschrijvingConsumentField = value;
+                    this.RaisePropertyChanged("OmschrijvingConsument");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OmschrijvingLatijn {
+            get {
+                return this.OmschrijvingLatijnField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OmschrijvingLatijnField, value) != true)) {
+                    this.OmschrijvingLatijnField = value;
+                    this.RaisePropertyChanged("OmschrijvingLatijn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Peildatum {
+            get {
+                return this.PeildatumField;
+            }
+            set {
+                if ((this.PeildatumField.Equals(value) != true)) {
+                    this.PeildatumField = value;
+                    this.RaisePropertyChanged("Peildatum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Versie {
+            get {
+                return this.VersieField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VersieField, value) != true)) {
+                    this.VersieField = value;
+                    this.RaisePropertyChanged("Versie");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ZorgproductCode {
+            get {
+                return this.ZorgproductCodeField;
+            }
+            set {
+                if ((this.ZorgproductCodeField.Equals(value) != true)) {
+                    this.ZorgproductCodeField = value;
+                    this.RaisePropertyChanged("ZorgproductCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IRetrieveService")]
     public interface IRetrieveService {
@@ -425,6 +582,22 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/ZorgactiviteitOmschrijvingContainsEntities", ReplyAction="http://tempuri.org/IRetrieveService/ZorgactiviteitOmschrijvingContainsEntitiesRes" +
             "ponse")]
         System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgactiviteit[]> ZorgactiviteitOmschrijvingContainsEntitiesAsync(string searchString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsNumber", ReplyAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsNumberResponse" +
+            "")]
+        int ZorgproductOmschrijvingContainsNumber(string searchString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsNumber", ReplyAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsNumberResponse" +
+            "")]
+        System.Threading.Tasks.Task<int> ZorgproductOmschrijvingContainsNumberAsync(string searchString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntities", ReplyAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntitiesRespon" +
+            "se")]
+        RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgproduct[] ZorgproductOmschrijvingContainsEntities(string searchString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntities", ReplyAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntitiesRespon" +
+            "se")]
+        System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgproduct[]> ZorgproductOmschrijvingContainsEntitiesAsync(string searchString);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -508,6 +681,22 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         
         public System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgactiviteit[]> ZorgactiviteitOmschrijvingContainsEntitiesAsync(string searchString) {
             return base.Channel.ZorgactiviteitOmschrijvingContainsEntitiesAsync(searchString);
+        }
+        
+        public int ZorgproductOmschrijvingContainsNumber(string searchString) {
+            return base.Channel.ZorgproductOmschrijvingContainsNumber(searchString);
+        }
+        
+        public System.Threading.Tasks.Task<int> ZorgproductOmschrijvingContainsNumberAsync(string searchString) {
+            return base.Channel.ZorgproductOmschrijvingContainsNumberAsync(searchString);
+        }
+        
+        public RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgproduct[] ZorgproductOmschrijvingContainsEntities(string searchString) {
+            return base.Channel.ZorgproductOmschrijvingContainsEntities(searchString);
+        }
+        
+        public System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgproduct[]> ZorgproductOmschrijvingContainsEntitiesAsync(string searchString) {
+            return base.Channel.ZorgproductOmschrijvingContainsEntitiesAsync(searchString);
         }
     }
 }

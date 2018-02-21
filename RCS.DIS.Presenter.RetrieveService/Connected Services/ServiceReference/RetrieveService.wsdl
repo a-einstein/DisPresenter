@@ -366,6 +366,82 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsNumber_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsNumber_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsEntities_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsEntities_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:50136/Retrieving/RetrieveService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -416,6 +492,18 @@
   <wsdl:message name="IRetrieveService_ZorgactiviteitOmschrijvingContainsEntities_OutputMessage">
     <wsdl:part name="parameters" element="tns:ZorgactiviteitOmschrijvingContainsEntitiesResponse" />
   </wsdl:message>
+  <wsdl:message name="IRetrieveService_ZorgproductOmschrijvingContainsNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:ZorgproductOmschrijvingContainsNumber" />
+  </wsdl:message>
+  <wsdl:message name="IRetrieveService_ZorgproductOmschrijvingContainsNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ZorgproductOmschrijvingContainsNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRetrieveService_ZorgproductOmschrijvingContainsEntities_InputMessage">
+    <wsdl:part name="parameters" element="tns:ZorgproductOmschrijvingContainsEntities" />
+  </wsdl:message>
+  <wsdl:message name="IRetrieveService_ZorgproductOmschrijvingContainsEntities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ZorgproductOmschrijvingContainsEntitiesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRetrieveService">
     <wsdl:operation name="Versies">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveService/Versies" message="tns:IRetrieveService_Versies_InputMessage" />
@@ -444,6 +532,14 @@
     <wsdl:operation name="ZorgactiviteitOmschrijvingContainsEntities">
       <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveService/ZorgactiviteitOmschrijvingContainsEntities" message="tns:IRetrieveService_ZorgactiviteitOmschrijvingContainsEntities_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveService/ZorgactiviteitOmschrijvingContainsEntitiesResponse" message="tns:IRetrieveService_ZorgactiviteitOmschrijvingContainsEntities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ZorgproductOmschrijvingContainsNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsNumber" message="tns:IRetrieveService_ZorgproductOmschrijvingContainsNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsNumberResponse" message="tns:IRetrieveService_ZorgproductOmschrijvingContainsNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ZorgproductOmschrijvingContainsEntities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntities" message="tns:IRetrieveService_ZorgproductOmschrijvingContainsEntities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntitiesResponse" message="tns:IRetrieveService_ZorgproductOmschrijvingContainsEntities_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WS2007HttpBinding_IRetrieveService" type="tns:IRetrieveService">
@@ -523,6 +619,28 @@
       </wsdl:input>
       <wsdl:output>
         <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsEntities_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZorgproductOmschrijvingContainsNumber">
+      <soap12:operation soapAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsNumber" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsNumber_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsNumber_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZorgproductOmschrijvingContainsEntities">
+      <soap12:operation soapAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntities" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsEntities_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsEntities_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
