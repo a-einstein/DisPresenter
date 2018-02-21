@@ -9,21 +9,28 @@ namespace RCS.DIS.Presenter
 {
     public partial class MainWindow : Window
     {
+        #region Construction
         public MainWindow()
         {
             InitializeComponent();
 
             DataContext = this;
 
-            var retrieveServiceClient = new RetrieveServiceClient();
-
-            Versies = retrieveServiceClient.Versies();
-
-            SetDiagnosesView(retrieveServiceClient);
-            SetSpecialismesView(retrieveServiceClient);
+            SetVersiesView();
+            SetDiagnosesView();
+            SetSpecialismesView();
         }
 
+        RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
+
+        #endregion
+
         #region Versies
+        private void SetVersiesView()
+        {
+            Versies = retrieveServiceClient.Versies();
+        }
+
         public static readonly DependencyProperty VersiesProperty =
             DependencyProperty.Register(nameof(Versies), typeof(string[]), typeof(MainWindow));
 
@@ -44,7 +51,7 @@ namespace RCS.DIS.Presenter
         #endregion
 
         #region Diagnoses
-        private void SetDiagnosesView(RetrieveServiceClient retrieveServiceClient)
+        private void SetDiagnosesView()
         {
             var tableSelectorViewModel = new TableSelectorViewModel<Diagnose>
                 ("Diagnose", retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
@@ -71,7 +78,7 @@ namespace RCS.DIS.Presenter
         #endregion
 
         #region Specialismes
-        private void SetSpecialismesView(RetrieveServiceClient retrieveServiceClient)
+        private void SetSpecialismesView()
         {
             var tableSelectorViewModel = new TableSelectorViewModel<Specialisme>
                 ("Specialisme", retrieveServiceClient.SpecialismeOmschrijvingContainsNumber, retrieveServiceClient.SpecialismeOmschrijvingContainsEntities)
