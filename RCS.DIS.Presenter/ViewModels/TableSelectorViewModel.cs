@@ -86,9 +86,10 @@ namespace RCS.DIS.Presenter.ViewModels
 
             Entities = null;
 
+            const int maximumRecords = 200;
             var number = NumberDelegate(SearchString);
 
-            if (number == 0 || number > 100)
+            if (number == 0 || number > maximumRecords)
                 ResultMessage = $"Found {number}. Please refine your query.";
             else
             {
