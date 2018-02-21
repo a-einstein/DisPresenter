@@ -70,4 +70,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ZorgactiviteitOmschrijvingContainsNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZorgactiviteitOmschrijvingContainsNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ZorgactiviteitOmschrijvingContainsNumberResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZorgactiviteitOmschrijvingContainsEntities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZorgactiviteitOmschrijvingContainsEntitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="ZorgactiviteitOmschrijvingContainsEntitiesResult" nillable="true" type="q4:ArrayOfZorgactiviteit" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -24,7 +24,7 @@
             <TextBox Width="200" Text="{Binding SearchString}"/>
             
             <!--TODO The IsDefault does not work, probably because of the TextBox.-->
-            <Button Content="Search diagnoses" Width="100" Command="{Binding SearchCommand}" IsDefault="True"/>
+            <Button Content="Search" Width="100" Command="{Binding SearchCommand}" IsDefault="True"/>
         </StackPanel>
 
         <TextBlock Grid.Row="2" Text="{Binding ResultMessage}" FontWeight="Bold" />

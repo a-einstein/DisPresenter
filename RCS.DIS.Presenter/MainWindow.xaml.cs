@@ -19,10 +19,10 @@ namespace RCS.DIS.Presenter
             SetVersiesView();
             SetDiagnosesView();
             SetSpecialismesView();
+            SetZorgactiviteitsView();
         }
 
         RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
-
         #endregion
 
         #region Versies
@@ -93,6 +93,32 @@ namespace RCS.DIS.Presenter
             var columns = new ObservableCollection<DataGridColumn>
             {
                 new DataGridTextColumn() { Binding= new Binding("SpecialismeCode"), Header="Specialisme" },
+                new DataGridTextColumn() { Binding= new Binding("Omschrijving"), Header="Omschrijving" },
+                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
+                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
+                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
+            };
+
+            return columns;
+        }
+        #endregion
+
+        #region Zorgactiviteiten
+        private void SetZorgactiviteitsView()
+        {
+            var tableSelectorViewModel = new TableSelectorViewModel<Zorgactiviteit>
+                ("Zorgactiviteit", retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumber, retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntities)
+            { SelectorGridColumns = ZorgactiviteitGridColumns(), FilterGridColumns = ZorgactiviteitGridColumns() };
+
+            ZorgactiviteitenTab.DataContext = tableSelectorViewModel;
+            ZorgactiviteitFilterArea.DataContext = tableSelectorViewModel;
+        }
+
+        ObservableCollection<DataGridColumn> ZorgactiviteitGridColumns()
+        {
+            var columns = new ObservableCollection<DataGridColumn>
+            {
+                new DataGridTextColumn() { Binding= new Binding("ZorgactiviteitCode"), Header="Zorgactiviteit" },
                 new DataGridTextColumn() { Binding= new Binding("Omschrijving"), Header="Omschrijving" },
                 new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
                 new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },

@@ -33,4 +33,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Specialisme" nillable="true" type="tns:Specialisme" />
+  <xs:complexType name="ArrayOfZorgactiviteit">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Zorgactiviteit" nillable="true" type="tns:Zorgactiviteit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfZorgactiviteit" nillable="true" type="tns:ArrayOfZorgactiviteit" />
+  <xs:complexType name="Zorgactiviteit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bestandsdatum" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Omschrijving" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Peildatum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Versie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZorgactiviteitCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZorgprofielklasseCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Zorgactiviteit" nillable="true" type="tns:Zorgactiviteit" />
 </xs:schema>
