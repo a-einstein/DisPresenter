@@ -69,11 +69,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataGridColumnsBehavior.cs" />
-    <Compile Include="TableSelectorView.xaml.cs">
+    <Compile Include="Behaviors\DataGridColumnsBehavior.cs" />
+    <Compile Include="Views\EntityFilterAreaView.xaml.cs">
+      <DependentUpon>EntityFilterAreaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TableSelectorView.xaml.cs">
       <DependentUpon>TableSelectorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TableSelectorViewModel.cs" />
+    <Compile Include="ViewModels\TableSelectorViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,7 +93,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TableSelectorView.xaml">
+    <Page Include="Views\EntityFilterAreaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TableSelectorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

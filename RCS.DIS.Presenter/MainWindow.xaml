@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:RCS.DIS.Presenter"
+    xmlns:Views="clr-namespace:RCS.DIS.Presenter.Views"
     mc:Ignorable="d"
     Title="DIS Presenter" 
     Height="800" Width="600"
@@ -21,34 +21,40 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
                             <TextBlock Grid.Row="0" Text="Versie" Width="100"/>
                             <!--Select the first element by IsSynchronizedWithCurrentItem. Currently there is even only one.-->
+
                             <!--TODO Lost automatic selection again.-->
                             <ComboBox Grid.Row="1" Width="100" ItemsSource="{Binding Versies}" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding VersieSelected}"/>
 
-                            <Grid Grid.Row="2" Name="DiagnoseFilterArea">
-                                <TextBlock Text="Diagnose" Width="100"/>
-                                <!--Use the button to return to the selection tab easily.-->
-                                <Button Grid.Row="3" Command="{Binding OpenEntitiesCommand}">
-                                    <DataGrid ItemsSource="{Binding SelectedSource}" AutoGenerateColumns="False" local:DataGridColumnsBehavior.BindableColumns="{Binding FilterGridColumns}" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}"/>
-                                </Button>
-                            </Grid>
+                            <Views:EntityFilterAreaView Grid.Row="2" x:Name="DiagnoseFilterArea"/>
+
+                            <Views:EntityFilterAreaView Grid.Row="3" x:Name="SpecialismeFilterArea"/>
+
+                            <Views:EntityFilterAreaView Grid.Row="4" x:Name="ZorgactiviteitFilterArea"/>
+
+                            <Views:EntityFilterAreaView Grid.Row="5" x:Name="ZorgproductFilterArea"/>
                         </Grid>
                     </TabItem>
 
                     <TabItem Header="Diagnoses" Name="DiagnosesTab">
-                        <local:TableSelectorView/>
+                        <Views:TableSelectorView/>
                     </TabItem>
 
-                    <TabItem Header="Specialismes">
+                    <TabItem Header="Specialismes" Name="SpecialismesTab">
+                        <Views:TableSelectorView/>
                     </TabItem>
 
-                    <TabItem Header="Activiteiten">
+                    <TabItem Header="Activiteiten" Name="ZorgactiviteitenTab">
+                        <Views:TableSelectorView/>
                     </TabItem>
 
-                    <TabItem Header="Producten">
+                    <TabItem Header="Producten" Name="ZorgproductenTab">
+                        <Views:TableSelectorView/>
                     </TabItem>
                 </TabControl>
             </TabItem>

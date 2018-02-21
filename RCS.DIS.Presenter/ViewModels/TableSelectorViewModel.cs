@@ -5,22 +5,34 @@ using Prism.Commands;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 
-namespace RCS.DIS.Presenter
+namespace RCS.DIS.Presenter.ViewModels
 {
     public class TableSelectorViewModel<entityType> : DependencyObject
     {
         public delegate int OmschrijvingContainsNumberDelegate(string SearchString);
         public delegate entityType[] OmschrijvingContainsEntitiesDelegate(string SearchString);
 
-        public TableSelectorViewModel(OmschrijvingContainsNumberDelegate numberDelegate, OmschrijvingContainsEntitiesDelegate entitiesDelegate)
+        public TableSelectorViewModel(
+            string entityName,
+            OmschrijvingContainsNumberDelegate numberDelegate,
+            OmschrijvingContainsEntitiesDelegate entitiesDelegate)
         {
+            EntityName = entityName;
             NumberDelegate = numberDelegate;
             EntitiesDelegate = entitiesDelegate;
 
             // TODO add enablement.
             SearchCommand = new DelegateCommand(Search);
-
             OpenEntitiesCommand = new DelegateCommand(OpenEntities);
+        }
+
+        public static readonly DependencyProperty EntityNameProperty =
+            DependencyProperty.Register(nameof(EntityName), typeof(string), typeof(TableSelectorViewModel<entityType>));
+
+        public string EntityName
+        {
+            get { return (string)GetValue(EntityNameProperty); }
+            set { SetValue(EntityNameProperty, value); }
         }
 
         private OmschrijvingContainsNumberDelegate NumberDelegate;
@@ -121,7 +133,7 @@ namespace RCS.DIS.Presenter
         }
 
         public static readonly DependencyProperty EntitiesProperty =
-            DependencyProperty.Register(nameof(Entities), typeof(entityType[]), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata(new entityType[0]));
+            DependencyProperty.Register(nameof(Entities), typeof(entityType[]), typeof(TableSelectorViewModel<entityType>));
 
         public entityType[] Entities
         {
@@ -130,7 +142,7 @@ namespace RCS.DIS.Presenter
         }
 
         public static readonly DependencyProperty SelectedProperty =
-            DependencyProperty.Register(nameof(Selected), typeof(Diagnose), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata(new PropertyChangedCallback(SetSelectedSource)));
+            DependencyProperty.Register(nameof(Selected), typeof(entityType), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata(new PropertyChangedCallback(SetSelectedSource)));
 
         public entityType Selected
         {

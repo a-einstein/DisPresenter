@@ -1,4 +1,5 @@
 ﻿using RCS.DIS.Presenter.RetrieveService.ServiceReference;
+using RCS.DIS.Presenter.ViewModels;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,7 @@ namespace RCS.DIS.Presenter
             Versies = retrieveServiceClient.Versies();
 
             SetDiagnosesView(retrieveServiceClient);
+            SetSpecialismesView(retrieveServiceClient);
         }
 
         #region Versies
@@ -45,10 +47,10 @@ namespace RCS.DIS.Presenter
         private void SetDiagnosesView(RetrieveServiceClient retrieveServiceClient)
         {
             var tableSelectorViewModel = new TableSelectorViewModel<Diagnose>
-                (retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
+                ("Diagnose", retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
                 { SelectorGridColumns = DiagnoseGridColumns(), FilterGridColumns = DiagnoseGridColumns() };
 
-            (DiagnosesTab.Content as TableSelectorView).DataContext = tableSelectorViewModel;
+            DiagnosesTab.DataContext = tableSelectorViewModel;
             DiagnoseFilterArea.DataContext = tableSelectorViewModel;
         }
 
@@ -57,6 +59,32 @@ namespace RCS.DIS.Presenter
             var columns = new ObservableCollection<DataGridColumn>
             {
                 new DataGridTextColumn() { Binding= new Binding("DiagnoseCode"), Header="Diagnose" },
+                new DataGridTextColumn() { Binding= new Binding("SpecialismeCode"), Header="Specialisme" },
+                new DataGridTextColumn() { Binding= new Binding("Omschrijving"), Header="Omschrijving" },
+                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
+                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
+                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
+            };
+
+            return columns;
+        }
+        #endregion
+
+        #region Specialismes
+        private void SetSpecialismesView(RetrieveServiceClient retrieveServiceClient)
+        {
+            var tableSelectorViewModel = new TableSelectorViewModel<Specialisme>
+                ("Specialisme", retrieveServiceClient.SpecialismeOmschrijvingContainsNumber, retrieveServiceClient.SpecialismeOmschrijvingContainsEntities)
+            { SelectorGridColumns = SpecialismeGridColumns(), FilterGridColumns = SpecialismeGridColumns() };
+
+            SpecialismesTab.DataContext = tableSelectorViewModel;
+            SpecialismeFilterArea.DataContext = tableSelectorViewModel;
+        }
+
+        ObservableCollection<DataGridColumn> SpecialismeGridColumns()
+        {
+            var columns = new ObservableCollection<DataGridColumn>
+            {
                 new DataGridTextColumn() { Binding= new Binding("SpecialismeCode"), Header="Specialisme" },
                 new DataGridTextColumn() { Binding= new Binding("Omschrijving"), Header="Omschrijving" },
                 new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},

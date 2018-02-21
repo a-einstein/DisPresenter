@@ -42,4 +42,32 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SpecialismeOmschrijvingContainsNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpecialismeOmschrijvingContainsNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SpecialismeOmschrijvingContainsNumberResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpecialismeOmschrijvingContainsEntities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SpecialismeOmschrijvingContainsEntitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="SpecialismeOmschrijvingContainsEntitiesResult" nillable="true" type="q3:ArrayOfSpecialisme" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

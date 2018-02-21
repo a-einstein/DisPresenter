@@ -17,4 +17,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Diagnose" nillable="true" type="tns:Diagnose" />
+  <xs:complexType name="ArrayOfSpecialisme">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Specialisme" nillable="true" type="tns:Specialisme" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecialisme" nillable="true" type="tns:ArrayOfSpecialisme" />
+  <xs:complexType name="Specialisme">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bestandsdatum" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Omschrijving" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Peildatum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SpecialismeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Versie" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Specialisme" nillable="true" type="tns:Specialisme" />
 </xs:schema>
