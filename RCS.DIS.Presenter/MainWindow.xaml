@@ -14,33 +14,7 @@
         <TabControl>
             <TabItem Header="Criteria">
                 <TabControl Name="CriteriaTabControl">
-                    <TabItem Header="Filter">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Grid.Row="0" Text="Versie" Width="100"/>
-                            <!--Select the first element by IsSynchronizedWithCurrentItem. Currently there is even only one.-->
-
-                            <!--TODO Lost automatic selection again.-->
-                            <ComboBox Grid.Row="1" Width="100" ItemsSource="{Binding Versies}" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding VersieSelected}"/>
-
-                            <Views:EntityFilterAreaView Grid.Row="2" x:Name="DiagnoseFilterArea"/>
-
-                            <Views:EntityFilterAreaView Grid.Row="3" x:Name="SpecialismeFilterArea"/>
-
-                            <Views:EntityFilterAreaView Grid.Row="4" x:Name="ZorgactiviteitFilterArea"/>
-
-                            <Views:EntityFilterAreaView Grid.Row="5" x:Name="ZorgproductFilterArea"/>
-                        </Grid>
-                    </TabItem>
-
+ 
                     <TabItem Header="Diagnoses" Name="DiagnosesTab">
                         <Views:TableSelectorView/>
                     </TabItem>
@@ -57,6 +31,33 @@
                         <Views:TableSelectorView/>
                     </TabItem>
                 </TabControl>
+            </TabItem>
+            
+            <TabItem Header="Filter">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Versie" Width="100"/>
+                    <!--Select the first element by IsSynchronizedWithCurrentItem. Currently there is even only one.-->
+
+                    <!--TODO Lost automatic selection again.-->
+                    <ComboBox Grid.Row="1" Width="100" ItemsSource="{Binding Versies}" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding VersieSelected}"/>
+
+                    <Views:EntityFilterAreaView Grid.Row="2" x:Name="DiagnoseFilterArea"/>
+
+                    <Views:EntityFilterAreaView Grid.Row="3" x:Name="SpecialismeFilterArea"/>
+
+                    <Views:EntityFilterAreaView Grid.Row="4" x:Name="ZorgactiviteitFilterArea"/>
+
+                    <Views:EntityFilterAreaView Grid.Row="5" x:Name="ZorgproductFilterArea"/>
+                </Grid>
             </TabItem>
 
             <TabItem Header="Search">
