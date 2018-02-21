@@ -34,7 +34,7 @@
 
             <TabItem Header="Filter">
                 <StackPanel>
-                    <Views:VersieFilterAreaView x:Name="VersieFilterArea"/>
+                    <Views:GeneralFilterAreaView x:Name="VersieFilterArea"/>
 
                     <Views:EntityFilterAreaView x:Name="DiagnoseFilterArea"/>
 

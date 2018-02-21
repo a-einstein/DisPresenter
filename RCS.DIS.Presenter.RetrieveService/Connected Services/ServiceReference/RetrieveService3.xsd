@@ -69,4 +69,29 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Zorgproduct" nillable="true" type="tns:Zorgproduct" />
+  <xs:complexType name="ArrayOfDbcOverzicht">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DbcOverzicht" nillable="true" type="tns:DbcOverzicht" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDbcOverzicht" nillable="true" type="tns:ArrayOfDbcOverzicht" />
+  <xs:complexType name="DbcOverzicht">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bestandsdatum" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DiagnoseCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Jaar" type="xs:short" />
+      <xs:element minOccurs="0" name="PatientenPerDiagnose" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientenPerSpecialisme" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientenPerZorgproduct" type="xs:int" />
+      <xs:element minOccurs="0" name="Peildatum" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SpecialismeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubtrajectenPerDiagnose" type="xs:int" />
+      <xs:element minOccurs="0" name="SubtrajectenPerSpecialisme" type="xs:int" />
+      <xs:element minOccurs="0" name="SubtrajectenPerZorgproduct" type="xs:int" />
+      <xs:element minOccurs="0" name="Verkoopprijs" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Versie" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZorgproductCode" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DbcOverzicht" nillable="true" type="tns:DbcOverzicht" />
 </xs:schema>

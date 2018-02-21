@@ -14,20 +14,22 @@ namespace RCS.DIS.Presenter
         {
             InitializeComponent();
 
-            SetVersiesView();
-            SetDiagnosesView();
-            SetSpecialismesView();
-            SetZorgactiviteitsView();
-            SetZorgproductsView();
+            SetGeneralViews();
+            SetDiagnosesViews();
+            SetSpecialismesViews();
+            SetZorgactiviteitsViews();
+            SetZorgproductsViews();
         }
 
         RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
         #endregion
 
-        #region Versies
-        private void SetVersiesView()
+        #region General
+        private void SetGeneralViews()
         {
-            var viewModel = new VersieFilterAreaViewModel();
+            var viewModel = new GeneralFilterAreaViewModel();
+
+            viewModel.Jaren = retrieveServiceClient.Jaren();
             viewModel.Versies = retrieveServiceClient.Versies();
 
             VersieFilterArea.DataContext = viewModel;
@@ -35,7 +37,7 @@ namespace RCS.DIS.Presenter
         #endregion
 
         #region Diagnoses
-        private void SetDiagnosesView()
+        private void SetDiagnosesViews()
         {
             var viewModel = new TableSelectorViewModel<Diagnose>
                 ("Diagnose", retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
@@ -62,7 +64,7 @@ namespace RCS.DIS.Presenter
         #endregion
 
         #region Specialismes
-        private void SetSpecialismesView()
+        private void SetSpecialismesViews()
         {
             var viewModel = new TableSelectorViewModel<Specialisme>
                 ("Specialisme", retrieveServiceClient.SpecialismeOmschrijvingContainsNumber, retrieveServiceClient.SpecialismeOmschrijvingContainsEntities)
@@ -88,7 +90,7 @@ namespace RCS.DIS.Presenter
         #endregion
 
         #region Zorgactiviteiten
-        private void SetZorgactiviteitsView()
+        private void SetZorgactiviteitsViews()
         {
             var viewModel = new TableSelectorViewModel<Zorgactiviteit>
                 ("Zorgactiviteit", retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumber, retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntities)
@@ -115,7 +117,7 @@ namespace RCS.DIS.Presenter
         #endregion
 
         #region Zorgproducten
-        private void SetZorgproductsView()
+        private void SetZorgproductsViews()
         {
             var viewModel = new TableSelectorViewModel<Zorgproduct>
                 ("Zorgproduct", retrieveServiceClient.ZorgproductOmschrijvingContainsNumber, retrieveServiceClient.ZorgproductOmschrijvingContainsEntities)

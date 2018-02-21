@@ -56,6 +56,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ServiceReference\RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcOverzicht.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\RCS.DIS.Presenter.RetrieveService.ServiceReference.Diagnose.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

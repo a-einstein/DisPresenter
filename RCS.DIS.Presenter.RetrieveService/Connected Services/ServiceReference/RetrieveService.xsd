@@ -2,6 +2,18 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:50136/Retrieving/RetrieveService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:50136/Retrieving/RetrieveService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" />
+  <xs:element name="Jaren">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JarenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="JarenResult" nillable="true" type="q1:ArrayOfshort" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Versies">
     <xs:complexType>
       <xs:sequence />
@@ -10,7 +22,7 @@
   <xs:element name="VersiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="VersiesResult" nillable="true" type="q1:ArrayOfstring" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="VersiesResult" nillable="true" type="q2:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,7 +50,7 @@
   <xs:element name="DiagnoseOmschrijvingContainsEntitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="DiagnoseOmschrijvingContainsEntitiesResult" nillable="true" type="q2:ArrayOfDiagnose" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="DiagnoseOmschrijvingContainsEntitiesResult" nillable="true" type="q3:ArrayOfDiagnose" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -66,7 +78,7 @@
   <xs:element name="SpecialismeOmschrijvingContainsEntitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="SpecialismeOmschrijvingContainsEntitiesResult" nillable="true" type="q3:ArrayOfSpecialisme" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="SpecialismeOmschrijvingContainsEntitiesResult" nillable="true" type="q4:ArrayOfSpecialisme" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -94,7 +106,7 @@
   <xs:element name="ZorgactiviteitOmschrijvingContainsEntitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="ZorgactiviteitOmschrijvingContainsEntitiesResult" nillable="true" type="q4:ArrayOfZorgactiviteit" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="ZorgactiviteitOmschrijvingContainsEntitiesResult" nillable="true" type="q5:ArrayOfZorgactiviteit" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -122,7 +134,43 @@
   <xs:element name="ZorgproductOmschrijvingContainsEntitiesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="ZorgproductOmschrijvingContainsEntitiesResult" nillable="true" type="q5:ArrayOfZorgproduct" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="ZorgproductOmschrijvingContainsEntitiesResult" nillable="true" type="q6:ArrayOfZorgproduct" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbcOverzichtNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jaar" type="xs:int" />
+        <xs:element minOccurs="0" name="specialismeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="diagnoseCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="zorgproductCode" type="xs:int" />
+        <xs:element minOccurs="0" name="versie" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbcOverzichtNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DbcOverzichtNumberResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbcOverzichtEntities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jaar" type="xs:int" />
+        <xs:element minOccurs="0" name="specialismeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="diagnoseCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="zorgproductCode" type="xs:int" />
+        <xs:element minOccurs="0" name="versie" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbcOverzichtEntitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="DbcOverzichtEntitiesResult" nillable="true" type="q7:ArrayOfDbcOverzicht" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

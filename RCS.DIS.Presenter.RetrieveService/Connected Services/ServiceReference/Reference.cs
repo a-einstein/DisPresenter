@@ -529,9 +529,268 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DbcOverzicht", Namespace="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class DbcOverzicht : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> BestandsdatumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DiagnoseCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short JaarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PatientenPerDiagnoseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PatientenPerSpecialismeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PatientenPerZorgproductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime PeildatumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SpecialismeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SubtrajectenPerDiagnoseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SubtrajectenPerSpecialismeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SubtrajectenPerZorgproductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> VerkoopprijsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VersieField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ZorgproductCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Bestandsdatum {
+            get {
+                return this.BestandsdatumField;
+            }
+            set {
+                if ((this.BestandsdatumField.Equals(value) != true)) {
+                    this.BestandsdatumField = value;
+                    this.RaisePropertyChanged("Bestandsdatum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DiagnoseCode {
+            get {
+                return this.DiagnoseCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DiagnoseCodeField, value) != true)) {
+                    this.DiagnoseCodeField = value;
+                    this.RaisePropertyChanged("DiagnoseCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Jaar {
+            get {
+                return this.JaarField;
+            }
+            set {
+                if ((this.JaarField.Equals(value) != true)) {
+                    this.JaarField = value;
+                    this.RaisePropertyChanged("Jaar");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PatientenPerDiagnose {
+            get {
+                return this.PatientenPerDiagnoseField;
+            }
+            set {
+                if ((this.PatientenPerDiagnoseField.Equals(value) != true)) {
+                    this.PatientenPerDiagnoseField = value;
+                    this.RaisePropertyChanged("PatientenPerDiagnose");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PatientenPerSpecialisme {
+            get {
+                return this.PatientenPerSpecialismeField;
+            }
+            set {
+                if ((this.PatientenPerSpecialismeField.Equals(value) != true)) {
+                    this.PatientenPerSpecialismeField = value;
+                    this.RaisePropertyChanged("PatientenPerSpecialisme");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PatientenPerZorgproduct {
+            get {
+                return this.PatientenPerZorgproductField;
+            }
+            set {
+                if ((this.PatientenPerZorgproductField.Equals(value) != true)) {
+                    this.PatientenPerZorgproductField = value;
+                    this.RaisePropertyChanged("PatientenPerZorgproduct");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Peildatum {
+            get {
+                return this.PeildatumField;
+            }
+            set {
+                if ((this.PeildatumField.Equals(value) != true)) {
+                    this.PeildatumField = value;
+                    this.RaisePropertyChanged("Peildatum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SpecialismeCode {
+            get {
+                return this.SpecialismeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SpecialismeCodeField, value) != true)) {
+                    this.SpecialismeCodeField = value;
+                    this.RaisePropertyChanged("SpecialismeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SubtrajectenPerDiagnose {
+            get {
+                return this.SubtrajectenPerDiagnoseField;
+            }
+            set {
+                if ((this.SubtrajectenPerDiagnoseField.Equals(value) != true)) {
+                    this.SubtrajectenPerDiagnoseField = value;
+                    this.RaisePropertyChanged("SubtrajectenPerDiagnose");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SubtrajectenPerSpecialisme {
+            get {
+                return this.SubtrajectenPerSpecialismeField;
+            }
+            set {
+                if ((this.SubtrajectenPerSpecialismeField.Equals(value) != true)) {
+                    this.SubtrajectenPerSpecialismeField = value;
+                    this.RaisePropertyChanged("SubtrajectenPerSpecialisme");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SubtrajectenPerZorgproduct {
+            get {
+                return this.SubtrajectenPerZorgproductField;
+            }
+            set {
+                if ((this.SubtrajectenPerZorgproductField.Equals(value) != true)) {
+                    this.SubtrajectenPerZorgproductField = value;
+                    this.RaisePropertyChanged("SubtrajectenPerZorgproduct");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Verkoopprijs {
+            get {
+                return this.VerkoopprijsField;
+            }
+            set {
+                if ((this.VerkoopprijsField.Equals(value) != true)) {
+                    this.VerkoopprijsField = value;
+                    this.RaisePropertyChanged("Verkoopprijs");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Versie {
+            get {
+                return this.VersieField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VersieField, value) != true)) {
+                    this.VersieField = value;
+                    this.RaisePropertyChanged("Versie");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ZorgproductCode {
+            get {
+                return this.ZorgproductCodeField;
+            }
+            set {
+                if ((this.ZorgproductCodeField.Equals(value) != true)) {
+                    this.ZorgproductCodeField = value;
+                    this.RaisePropertyChanged("ZorgproductCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IRetrieveService")]
     public interface IRetrieveService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/Jaren", ReplyAction="http://tempuri.org/IRetrieveService/JarenResponse")]
+        short[] Jaren();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/Jaren", ReplyAction="http://tempuri.org/IRetrieveService/JarenResponse")]
+        System.Threading.Tasks.Task<short[]> JarenAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/Versies", ReplyAction="http://tempuri.org/IRetrieveService/VersiesResponse")]
         string[] Versies();
@@ -598,6 +857,18 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntities", ReplyAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntitiesRespon" +
             "se")]
         System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgproduct[]> ZorgproductOmschrijvingContainsEntitiesAsync(string searchString);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcOverzichtNumber", ReplyAction="http://tempuri.org/IRetrieveService/DbcOverzichtNumberResponse")]
+        int DbcOverzichtNumber(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcOverzichtNumber", ReplyAction="http://tempuri.org/IRetrieveService/DbcOverzichtNumberResponse")]
+        System.Threading.Tasks.Task<int> DbcOverzichtNumberAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcOverzichtEntities", ReplyAction="http://tempuri.org/IRetrieveService/DbcOverzichtEntitiesResponse")]
+        RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcOverzicht[] DbcOverzichtEntities(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcOverzichtEntities", ReplyAction="http://tempuri.org/IRetrieveService/DbcOverzichtEntitiesResponse")]
+        System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcOverzicht[]> DbcOverzichtEntitiesAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -625,6 +896,14 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         
         public RetrieveServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public short[] Jaren() {
+            return base.Channel.Jaren();
+        }
+        
+        public System.Threading.Tasks.Task<short[]> JarenAsync() {
+            return base.Channel.JarenAsync();
         }
         
         public string[] Versies() {
@@ -697,6 +976,22 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         
         public System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.Zorgproduct[]> ZorgproductOmschrijvingContainsEntitiesAsync(string searchString) {
             return base.Channel.ZorgproductOmschrijvingContainsEntitiesAsync(searchString);
+        }
+        
+        public int DbcOverzichtNumber(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie) {
+            return base.Channel.DbcOverzichtNumber(jaar, specialismeCode, diagnoseCode, zorgproductCode, versie);
+        }
+        
+        public System.Threading.Tasks.Task<int> DbcOverzichtNumberAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie) {
+            return base.Channel.DbcOverzichtNumberAsync(jaar, specialismeCode, diagnoseCode, zorgproductCode, versie);
+        }
+        
+        public RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcOverzicht[] DbcOverzichtEntities(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie) {
+            return base.Channel.DbcOverzichtEntities(jaar, specialismeCode, diagnoseCode, zorgproductCode, versie);
+        }
+        
+        public System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcOverzicht[]> DbcOverzichtEntitiesAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie) {
+            return base.Channel.DbcOverzichtEntitiesAsync(jaar, specialismeCode, diagnoseCode, zorgproductCode, versie);
         }
     }
 }

@@ -70,7 +70,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviors\DataGridColumnsBehavior.cs" />
-    <Compile Include="ViewModels\VersieFilterAreaViewModel.cs" />
+    <Compile Include="ViewModels\GeneralFilterAreaViewModel.cs" />
     <Compile Include="Views\EntityFilterAreaView.xaml.cs">
       <DependentUpon>EntityFilterAreaView.xaml</DependentUpon>
     </Compile>
@@ -78,8 +78,8 @@
       <DependentUpon>TableSelectorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\TableSelectorViewModel.cs" />
-    <Compile Include="Views\VersieFilterAreaView.xaml.cs">
-      <DependentUpon>VersieFilterAreaView.xaml</DependentUpon>
+    <Compile Include="Views\GeneralFilterAreaView.xaml.cs">
+      <DependentUpon>GeneralFilterAreaView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -105,7 +105,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\VersieFilterAreaView.xaml">
+    <Page Include="Views\GeneralFilterAreaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -2,9 +2,9 @@
 
 namespace RCS.DIS.Presenter.Views
 {
-    public partial class VersieFilterAreaView : UserControl
+    public partial class GeneralFilterAreaView : UserControl
     {
-        public VersieFilterAreaView()
+        public GeneralFilterAreaView()
         {
             InitializeComponent();
         }
