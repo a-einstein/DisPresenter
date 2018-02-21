@@ -30,7 +30,6 @@
         <TextBlock Grid.Row="2" Text="{Binding ResultMessage}" FontWeight="Bold" />
 
         <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
-        <DataGrid Grid.Row="3" 
-                  ItemsSource="{Binding Entities}" AutoGenerateColumns="False" local:DataGridColumnsBehavior.BindableColumns="{Binding SelectorGridColumns}" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding Selected, Mode=OneWayToSource}"/>
+        <DataGrid Grid.Row="3" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" local:DataGridColumnsBehavior.BindableColumns="{Binding SelectorGridColumns}" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding Selected, Mode=OneWayToSource}"/>
     </Grid>
 </UserControl>

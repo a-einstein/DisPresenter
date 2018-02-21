@@ -25,7 +25,8 @@
 
                             <TextBlock Grid.Row="0" Text="Versie" Width="100"/>
                             <!--Select the first element by IsSynchronizedWithCurrentItem. Currently there is even only one.-->
-                            <ComboBox Grid.Row="1" Width="100" ItemsSource="{Binding Versies}" IsSynchronizedWithCurrentItem="True"/>
+                            <!--TODO Lost automatic selection again.-->
+                            <ComboBox Grid.Row="1" Width="100" ItemsSource="{Binding Versies}" IsSynchronizedWithCurrentItem="True" SelectedValue="{Binding VersieSelected}"/>
 
                             <Grid Grid.Row="2" Name="DiagnoseFilterArea">
                                 <TextBlock Text="Diagnose" Width="100"/>
