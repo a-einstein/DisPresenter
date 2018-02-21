@@ -70,13 +70,18 @@ namespace RCS.DIS.Presenter
 
         public void Search()
         {
+            StartMessage = null;
+
+            Entities = null;
+
             var number = NumberDelegate(SearchString);
 
             if (number == 0 || number > 100)
-                Message = $"Found {number}. Please refine your query.";
+                ResultMessage = $"Found {number}. Please refine your query.";
             else
             {
-                Message = $"Found {number}. Please select a diagnose.";
+                ResultMessage = $"Found {number}. Please select a diagnose, it will be added to the Filter tab.";
+
                 Entities = EntitiesDelegate(SearchString);
             }
         }
@@ -97,13 +102,22 @@ namespace RCS.DIS.Presenter
             //CriteriaTabControl.SelectedItem = DiagnosesTab;
         }
 
-        public static readonly DependencyProperty MessageProperty =
-            DependencyProperty.Register(nameof(Message), typeof(string), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata("Enter part of the omschrijving to look for."));
+        public static readonly DependencyProperty StartMessageProperty =
+            DependencyProperty.Register(nameof(StartMessage), typeof(string), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata("Enter part of the omschrijving to look for."));
 
-        public string Message
+        public string StartMessage
         {
-            get { return (string)GetValue(MessageProperty); }
-            set { SetValue(MessageProperty, value); }
+            get { return (string)GetValue(StartMessageProperty); }
+            set { SetValue(StartMessageProperty, value); }
+        }
+
+        public static readonly DependencyProperty ResultMessageProperty =
+            DependencyProperty.Register(nameof(ResultMessage), typeof(string), typeof(TableSelectorViewModel<entityType>));
+
+        public string ResultMessage
+        {
+            get { return (string)GetValue(ResultMessageProperty); }
+            set { SetValue(ResultMessageProperty, value); }
         }
 
         public static readonly DependencyProperty EntitiesProperty =
