@@ -21,6 +21,7 @@ namespace RCS.DIS.Presenter
             SetZorgproductenViews();
 
             SetDbcOverzichtenViews();
+            SetDbcProfielenViews();
         }
 
         RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
@@ -164,7 +165,6 @@ namespace RCS.DIS.Presenter
                 GeneralSelector,
                 DiagnoseSelector,
                 SpecialismeSelector,
-                ZorgactiviteitSelector,
                 ZorgproductSelector)
             { GridColumns = DbcOverzichtGridColumns() };
 
@@ -172,6 +172,44 @@ namespace RCS.DIS.Presenter
         }
 
         ObservableCollection<DataGridColumn> DbcOverzichtGridColumns()
+        {
+            var columns = new ObservableCollection<DataGridColumn>
+            {
+                new DataGridTextColumn() { Binding= new Binding("Jaar"), Header="Jaar" },
+                new DataGridTextColumn() { Binding= new Binding("SpecialismeCode"), Header="Specialisme" },
+                new DataGridTextColumn() { Binding= new Binding("PatientenPerSpecialisme"), Header="Pat/Spec" },
+                new DataGridTextColumn() { Binding= new Binding("SubtrajectenPerSpecialisme"), Header="Subtraj/Spec" },
+                new DataGridTextColumn() { Binding= new Binding("DiagnoseCode"), Header="Diagnose" },
+                new DataGridTextColumn() { Binding= new Binding("PatientenPerDiagnose"), Header="Pat/Diag" },
+                new DataGridTextColumn() { Binding= new Binding("SubtrajectenPerDiagnose"), Header="Subtraj/Diag" },
+                new DataGridTextColumn() { Binding= new Binding("ZorgproductCode"), Header="Product" },
+                new DataGridTextColumn() { Binding= new Binding("PatientenPerZorgproduct"), Header="Pat/Prod" },
+                new DataGridTextColumn() { Binding= new Binding("SubtrajectenPerZorgproduct"), Header="Subtraj/Prod" },
+                new DataGridTextColumn() { Binding= new Binding("Verkoopprijs"), Header="Prijs" },
+                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
+                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
+                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
+            };
+
+            return columns;
+        }
+        #endregion
+
+        #region DbcProfielen
+        private void SetDbcProfielenViews()
+        {
+            var viewModel = new DbcProfielViewModel(
+                GeneralSelector,
+                DiagnoseSelector,
+                SpecialismeSelector,
+                ZorgactiviteitSelector,
+                ZorgproductSelector)
+            { GridColumns = DbcProfielGridColumns() };
+
+            DbcProfielenTab.DataContext = viewModel;
+        }
+
+        ObservableCollection<DataGridColumn> DbcProfielGridColumns()
         {
             var columns = new ObservableCollection<DataGridColumn>
             {

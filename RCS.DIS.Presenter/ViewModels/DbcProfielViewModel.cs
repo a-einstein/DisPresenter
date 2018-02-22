@@ -2,43 +2,45 @@
 
 namespace RCS.DIS.Presenter.ViewModels
 {
-    public class DbcOverzichtViewModel : OverviewModel<DbcOverzicht>
+    class DbcProfielViewModel : OverviewModel<DbcProfiel>
     {
-        // Have this constructor to better enforce values than in properties alone.
-        // However they can still be null.
-        // They might become default not null in some version of C#.
-        // TODO Check this.
-        public DbcOverzichtViewModel(
-            GeneralFilterAreaViewModel generalSelector,
-            TableSelectorViewModel<Diagnose> diagnoseSelector,
-            TableSelectorViewModel<Specialisme> specialismeSelector,
-            TableSelectorViewModel<Zorgproduct> zorgproductSelector)
+        public DbcProfielViewModel(
+             GeneralFilterAreaViewModel generalSelector,
+             TableSelectorViewModel<Diagnose> diagnoseSelector,
+             TableSelectorViewModel<Specialisme> specialismeSelector,
+             TableSelectorViewModel<Zorgactiviteit> zorgactiviteitSelector,
+             TableSelectorViewModel<Zorgproduct> zorgproductSelector)
         {
             GeneralSelector = generalSelector;
             DiagnoseSelector = diagnoseSelector;
             SpecialismeSelector = specialismeSelector;
+            ZorgactiviteitSelector = zorgactiviteitSelector;
             ZorgproductSelector = zorgproductSelector;
         }
+
+        protected TableSelectorViewModel<Zorgactiviteit> ZorgactiviteitSelector;
 
         public override void Search()
         {
             base.Search();
 
-            var number = retrieveServiceClient.DbcOverzichtNumber(
+            var number = retrieveServiceClient.DbcProfielNumber(
                 GeneralSelector.JaarSelected,
                 SpecialismeSelector.Selected.SpecialismeCode,
                 DiagnoseSelector.Selected.DiagnoseCode,
                 ZorgproductSelector.Selected.ZorgproductCode,
+                ZorgactiviteitSelector.Selected.ZorgactiviteitCode,
                 GeneralSelector.VersieSelected);
 
             if (number == 0 || number > maximumRecords)
                 ResultMessage = $"Found {number}. Please refine your query.";
             else
-                Entities = retrieveServiceClient.DbcOverzichtEntities(
+                Entities = retrieveServiceClient.DbcProfielEntities(
                     GeneralSelector.JaarSelected,
                     SpecialismeSelector.Selected.SpecialismeCode,
                     DiagnoseSelector.Selected.DiagnoseCode,
                     ZorgproductSelector.Selected.ZorgproductCode,
+                ZorgactiviteitSelector.Selected.ZorgactiviteitCode,
                     GeneralSelector.VersieSelected);
         }
     }

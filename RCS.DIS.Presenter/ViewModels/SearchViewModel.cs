@@ -10,8 +10,6 @@ namespace RCS.DIS.Presenter.ViewModels
     {
         protected SearchViewModel()
         {
-            StartMessage = "Searching will be with the current Filter values.";
-
             // TODO add enablement.
             SearchCommand = new DelegateCommand(Search);
         }

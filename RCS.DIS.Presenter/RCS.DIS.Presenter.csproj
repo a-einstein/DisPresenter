@@ -71,6 +71,7 @@
     </ApplicationDefinition>
     <Compile Include="Behaviors\DataGridColumnsBehavior.cs" />
     <Compile Include="ViewModels\DbcOverzichtViewModel.cs" />
+    <Compile Include="ViewModels\DbcProfielViewModel.cs" />
     <Compile Include="ViewModels\GeneralFilterAreaViewModel.cs" />
     <Compile Include="ViewModels\OverviewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />

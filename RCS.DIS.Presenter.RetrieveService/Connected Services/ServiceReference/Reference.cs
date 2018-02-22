@@ -782,6 +782,211 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DbcProfiel", Namespace="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class DbcProfiel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> BestandsdatumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DiagnoseCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short JaarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PatientenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime PeildatumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SpecialismeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SubtrajectenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VersieField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ZorgactiviteitCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ZorgactiviteitenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ZorgproductCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Bestandsdatum {
+            get {
+                return this.BestandsdatumField;
+            }
+            set {
+                if ((this.BestandsdatumField.Equals(value) != true)) {
+                    this.BestandsdatumField = value;
+                    this.RaisePropertyChanged("Bestandsdatum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DiagnoseCode {
+            get {
+                return this.DiagnoseCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DiagnoseCodeField, value) != true)) {
+                    this.DiagnoseCodeField = value;
+                    this.RaisePropertyChanged("DiagnoseCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Jaar {
+            get {
+                return this.JaarField;
+            }
+            set {
+                if ((this.JaarField.Equals(value) != true)) {
+                    this.JaarField = value;
+                    this.RaisePropertyChanged("Jaar");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Patienten {
+            get {
+                return this.PatientenField;
+            }
+            set {
+                if ((this.PatientenField.Equals(value) != true)) {
+                    this.PatientenField = value;
+                    this.RaisePropertyChanged("Patienten");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime Peildatum {
+            get {
+                return this.PeildatumField;
+            }
+            set {
+                if ((this.PeildatumField.Equals(value) != true)) {
+                    this.PeildatumField = value;
+                    this.RaisePropertyChanged("Peildatum");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SpecialismeCode {
+            get {
+                return this.SpecialismeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SpecialismeCodeField, value) != true)) {
+                    this.SpecialismeCodeField = value;
+                    this.RaisePropertyChanged("SpecialismeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Subtrajecten {
+            get {
+                return this.SubtrajectenField;
+            }
+            set {
+                if ((this.SubtrajectenField.Equals(value) != true)) {
+                    this.SubtrajectenField = value;
+                    this.RaisePropertyChanged("Subtrajecten");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Versie {
+            get {
+                return this.VersieField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VersieField, value) != true)) {
+                    this.VersieField = value;
+                    this.RaisePropertyChanged("Versie");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ZorgactiviteitCode {
+            get {
+                return this.ZorgactiviteitCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZorgactiviteitCodeField, value) != true)) {
+                    this.ZorgactiviteitCodeField = value;
+                    this.RaisePropertyChanged("ZorgactiviteitCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Zorgactiviteiten {
+            get {
+                return this.ZorgactiviteitenField;
+            }
+            set {
+                if ((this.ZorgactiviteitenField.Equals(value) != true)) {
+                    this.ZorgactiviteitenField = value;
+                    this.RaisePropertyChanged("Zorgactiviteiten");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ZorgproductCode {
+            get {
+                return this.ZorgproductCodeField;
+            }
+            set {
+                if ((this.ZorgproductCodeField.Equals(value) != true)) {
+                    this.ZorgproductCodeField = value;
+                    this.RaisePropertyChanged("ZorgproductCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IRetrieveService")]
     public interface IRetrieveService {
@@ -869,6 +1074,18 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcOverzichtEntities", ReplyAction="http://tempuri.org/IRetrieveService/DbcOverzichtEntitiesResponse")]
         System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcOverzicht[]> DbcOverzichtEntitiesAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcProfielNumber", ReplyAction="http://tempuri.org/IRetrieveService/DbcProfielNumberResponse")]
+        int DbcProfielNumber(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string zorgactiviteitCode, string versie);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcProfielNumber", ReplyAction="http://tempuri.org/IRetrieveService/DbcProfielNumberResponse")]
+        System.Threading.Tasks.Task<int> DbcProfielNumberAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string zorgactiviteitCode, string versie);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcProfielEntities", ReplyAction="http://tempuri.org/IRetrieveService/DbcProfielEntitiesResponse")]
+        RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcProfiel[] DbcProfielEntities(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string zorgactiviteitCode, string versie);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRetrieveService/DbcProfielEntities", ReplyAction="http://tempuri.org/IRetrieveService/DbcProfielEntitiesResponse")]
+        System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcProfiel[]> DbcProfielEntitiesAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string zorgactiviteitCode, string versie);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -992,6 +1209,22 @@ namespace RCS.DIS.Presenter.RetrieveService.ServiceReference {
         
         public System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcOverzicht[]> DbcOverzichtEntitiesAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string versie) {
             return base.Channel.DbcOverzichtEntitiesAsync(jaar, specialismeCode, diagnoseCode, zorgproductCode, versie);
+        }
+        
+        public int DbcProfielNumber(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string zorgactiviteitCode, string versie) {
+            return base.Channel.DbcProfielNumber(jaar, specialismeCode, diagnoseCode, zorgproductCode, zorgactiviteitCode, versie);
+        }
+        
+        public System.Threading.Tasks.Task<int> DbcProfielNumberAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string zorgactiviteitCode, string versie) {
+            return base.Channel.DbcProfielNumberAsync(jaar, specialismeCode, diagnoseCode, zorgproductCode, zorgactiviteitCode, versie);
+        }
+        
+        public RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcProfiel[] DbcProfielEntities(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string zorgactiviteitCode, string versie) {
+            return base.Channel.DbcProfielEntities(jaar, specialismeCode, diagnoseCode, zorgproductCode, zorgactiviteitCode, versie);
+        }
+        
+        public System.Threading.Tasks.Task<RCS.DIS.Presenter.RetrieveService.ServiceReference.DbcProfiel[]> DbcProfielEntitiesAsync(int jaar, string specialismeCode, string diagnoseCode, int zorgproductCode, string zorgactiviteitCode, string versie) {
+            return base.Channel.DbcProfielEntitiesAsync(jaar, specialismeCode, diagnoseCode, zorgproductCode, zorgactiviteitCode, versie);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace RCS.DIS.Presenter.ViewModels
             NumberDelegate = numberDelegate;
             EntitiesDelegate = entitiesDelegate;
 
-            StartMessage = "Enter part of the omschrijving to look for.";
+            StartMessage = "Enter part of the Omschrijving to look for.";
             OpenEntitiesCommand = new DelegateCommand(OpenEntities);
         }
 

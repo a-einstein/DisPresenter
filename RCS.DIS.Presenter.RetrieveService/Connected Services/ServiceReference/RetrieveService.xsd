@@ -174,4 +174,42 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="DbcProfielNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jaar" type="xs:int" />
+        <xs:element minOccurs="0" name="specialismeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="diagnoseCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="zorgproductCode" type="xs:int" />
+        <xs:element minOccurs="0" name="zorgactiviteitCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="versie" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbcProfielNumberResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DbcProfielNumberResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbcProfielEntities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jaar" type="xs:int" />
+        <xs:element minOccurs="0" name="specialismeCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="diagnoseCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="zorgproductCode" type="xs:int" />
+        <xs:element minOccurs="0" name="zorgactiviteitCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="versie" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DbcProfielEntitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/RCS.DIS.Services.DTOs" minOccurs="0" name="DbcProfielEntitiesResult" nillable="true" type="q8:ArrayOfDbcProfiel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
