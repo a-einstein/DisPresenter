@@ -2,7 +2,7 @@
 
 namespace RCS.DIS.Presenter.ViewModels
 {
-    class GeneralFilterAreaViewModel : DependencyObject
+    public class GeneralFilterAreaViewModel : DependencyObject
     {
         #region Jaren
         public static readonly DependencyProperty JarenProperty =

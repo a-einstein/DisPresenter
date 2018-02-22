@@ -6,11 +6,8 @@ using System.Windows.Input;
 
 namespace RCS.DIS.Presenter.ViewModels
 {
-    public class TableSelectorViewModel<entityType> : DependencyObject
+    public class TableSelectorViewModel<entityType> : SearchViewModel<entityType>
     {
-        public delegate int OmschrijvingContainsNumberDelegate(string SearchString);
-        public delegate entityType[] OmschrijvingContainsEntitiesDelegate(string SearchString);
-
         public TableSelectorViewModel(
             string entityName,
             OmschrijvingContainsNumberDelegate numberDelegate,
@@ -20,8 +17,7 @@ namespace RCS.DIS.Presenter.ViewModels
             NumberDelegate = numberDelegate;
             EntitiesDelegate = entitiesDelegate;
 
-            // TODO add enablement.
-            SearchCommand = new DelegateCommand(Search);
+            StartMessage = "Enter part of the omschrijving to look for.";
             OpenEntitiesCommand = new DelegateCommand(OpenEntities);
         }
 
@@ -34,20 +30,11 @@ namespace RCS.DIS.Presenter.ViewModels
             set { SetValue(EntityNameProperty, value); }
         }
 
+        public delegate int OmschrijvingContainsNumberDelegate(string SearchString);
         private OmschrijvingContainsNumberDelegate NumberDelegate;
+
+        public delegate entityType[] OmschrijvingContainsEntitiesDelegate(string SearchString);
         private OmschrijvingContainsEntitiesDelegate EntitiesDelegate;
-
-        public static readonly DependencyProperty SelectorGridColumnsProperty =
-            DependencyProperty.Register(nameof(SelectorGridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(TableSelectorViewModel<entityType>));
-
-        /// <summary>
-        /// Note the columns cannot be shared. Set 2 equal collections.
-        /// </summary>
-        public ObservableCollection<DataGridColumn> SelectorGridColumns
-        {
-            get { return (ObservableCollection<DataGridColumn>)GetValue(SelectorGridColumnsProperty); }
-            set { SetValue(SelectorGridColumnsProperty, value); }
-        }
 
         public static readonly DependencyProperty FilterGridColumnsProperty =
             DependencyProperty.Register(nameof(FilterGridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(TableSelectorViewModel<entityType>));
@@ -70,22 +57,10 @@ namespace RCS.DIS.Presenter.ViewModels
             set { SetValue(SearchStringProperty, value); }
         }
 
-        public static readonly DependencyProperty SearchCommandProperty =
-            DependencyProperty.Register(nameof(SearchCommand), typeof(ICommand), typeof(TableSelectorViewModel<entityType>));
-
-        public ICommand SearchCommand
+        public override void Search()
         {
-            get { return (ICommand)GetValue(SearchCommandProperty); }
-            set { SetValue(SearchCommandProperty, value); }
-        }
+            base.Search();
 
-        public void Search()
-        {
-            StartMessage = null;
-
-            Entities = null;
-
-            const int maximumRecords = 200;
             var number = NumberDelegate(SearchString);
 
             if (number == 0 || number > maximumRecords)
@@ -112,33 +87,6 @@ namespace RCS.DIS.Presenter.ViewModels
         public void OpenEntities()
         {
             //CriteriaTabControl.SelectedItem = DiagnosesTab;
-        }
-
-        public static readonly DependencyProperty StartMessageProperty =
-            DependencyProperty.Register(nameof(StartMessage), typeof(string), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata("Enter part of the omschrijving to look for."));
-
-        public string StartMessage
-        {
-            get { return (string)GetValue(StartMessageProperty); }
-            set { SetValue(StartMessageProperty, value); }
-        }
-
-        public static readonly DependencyProperty ResultMessageProperty =
-            DependencyProperty.Register(nameof(ResultMessage), typeof(string), typeof(TableSelectorViewModel<entityType>));
-
-        public string ResultMessage
-        {
-            get { return (string)GetValue(ResultMessageProperty); }
-            set { SetValue(ResultMessageProperty, value); }
-        }
-
-        public static readonly DependencyProperty EntitiesProperty =
-            DependencyProperty.Register(nameof(Entities), typeof(entityType[]), typeof(TableSelectorViewModel<entityType>));
-
-        public entityType[] Entities
-        {
-            get { return (entityType[])GetValue(EntitiesProperty); }
-            set { SetValue(EntitiesProperty, value); }
         }
 
         public static readonly DependencyProperty SelectedProperty =

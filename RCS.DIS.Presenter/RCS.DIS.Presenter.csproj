@@ -70,9 +70,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Behaviors\DataGridColumnsBehavior.cs" />
+    <Compile Include="ViewModels\DbcOverzichtViewModel.cs" />
     <Compile Include="ViewModels\GeneralFilterAreaViewModel.cs" />
+    <Compile Include="ViewModels\OverviewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Views\EntityFilterAreaView.xaml.cs">
       <DependentUpon>EntityFilterAreaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchView.xaml.cs">
+      <DependentUpon>SearchView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TableSelectorView.xaml.cs">
       <DependentUpon>TableSelectorView.xaml</DependentUpon>
@@ -98,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EntityFilterAreaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

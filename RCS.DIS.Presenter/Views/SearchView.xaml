@@ -1,5 +1,5 @@
-﻿<UserControl
-    x:Class="RCS.DIS.Presenter.Views.TableSelectorView"
+﻿<UserControl 
+    x:Class="RCS.DIS.Presenter.Views.SearchView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -18,18 +18,11 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="{Binding StartMessage}" Style="{StaticResource TextBlockEmphasisStyle}" />
-
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBlock  Text="Omschrijving contains"/>
-            <TextBox Width="200" Text="{Binding SearchString}"/>
-
-            <!--TODO The IsDefault does not work, probably because of the TextBox.-->
-            <Button Content="Search" Width="100" Command="{Binding SearchCommand}" IsDefault="True"/>
-        </StackPanel>
+      
+        <Button Grid.Row="1" Content="Search" Width="100" Command="{Binding SearchCommand}" IsDefault="True"/>
 
         <TextBlock Grid.Row="2" Text="{Binding ResultMessage}" Style="{StaticResource TextBlockEmphasisStyle}" />
 
-        <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
-        <DataGrid Grid.Row="3" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" Behaviors:DataGridColumnsBehavior.BindableColumns="{Binding GridColumns}" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding Selected, Mode=OneWayToSource}"/>
+        <DataGrid Grid.Row="3" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" Behaviors:DataGridColumnsBehavior.BindableColumns="{Binding GridColumns}" IsReadOnly="True" SelectionMode="Single"/>
     </Grid>
 </UserControl>

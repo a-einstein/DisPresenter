@@ -48,10 +48,12 @@
 
             <TabItem Header="Search">
                 <TabControl>
-                    <TabItem Header="DBC's">
+                    <TabItem Header="DBC's" x:Name="DbcOverzichtenTab">
+                        <Views:SearchView/>
                     </TabItem>
 
-                    <TabItem Header="Profielen">
+                    <TabItem Header="Profielen" x:Name="DbcProfielenTab">
+                        <Views:SearchView/>
                     </TabItem>
                 </TabControl>
             </TabItem>
