@@ -45,7 +45,7 @@ namespace RCS.DIS.Presenter
         private void SetDiagnosesViews()
         {
             DiagnoseSelector = new TableSelectorViewModel<Diagnose>
-                ("Diagnose", retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
+                (nameof(Diagnose), retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
             { GridColumns = DiagnoseGridColumns(), FilterGridColumns = DiagnoseGridColumns() };
 
             DiagnosesTab.DataContext = DiagnoseSelector;
@@ -74,7 +74,7 @@ namespace RCS.DIS.Presenter
         private void SetSpecialismesViews()
         {
             SpecialismeSelector = new TableSelectorViewModel<Specialisme>
-                ("Specialisme", retrieveServiceClient.SpecialismeOmschrijvingContainsNumber, retrieveServiceClient.SpecialismeOmschrijvingContainsEntities)
+                (nameof(Specialisme), retrieveServiceClient.SpecialismeOmschrijvingContainsNumber, retrieveServiceClient.SpecialismeOmschrijvingContainsEntities)
             { GridColumns = SpecialismeGridColumns(), FilterGridColumns = SpecialismeGridColumns() };
 
             SpecialismesTab.DataContext = SpecialismeSelector;
@@ -102,7 +102,7 @@ namespace RCS.DIS.Presenter
         private void SetZorgactiviteitenViews()
         {
             ZorgactiviteitSelector = new TableSelectorViewModel<Zorgactiviteit>
-                ("Zorgactiviteit", retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumber, retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntities)
+                (nameof(Zorgactiviteit), retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumber, retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntities)
             { GridColumns = ZorgactiviteitGridColumns(), FilterGridColumns = ZorgactiviteitGridColumns() };
 
             ZorgactiviteitenTab.DataContext = ZorgactiviteitSelector;
@@ -131,7 +131,7 @@ namespace RCS.DIS.Presenter
         private void SetZorgproductenViews()
         {
             ZorgproductSelector = new TableSelectorViewModel<Zorgproduct>
-                ("Zorgproduct", retrieveServiceClient.ZorgproductOmschrijvingContainsNumber, retrieveServiceClient.ZorgproductOmschrijvingContainsEntities)
+                (nameof(Zorgproduct), retrieveServiceClient.ZorgproductOmschrijvingContainsNumber, retrieveServiceClient.ZorgproductOmschrijvingContainsEntities)
             { GridColumns = ZorgproductGridColumns(), FilterGridColumns = ZorgproductGridColumns() };
 
             ZorgproductenTab.DataContext = ZorgproductSelector;

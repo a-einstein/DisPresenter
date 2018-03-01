@@ -9,11 +9,11 @@ namespace RCS.DIS.Presenter.ViewModels
     public class TableSelectorViewModel<entityType> : SearchViewModel<entityType>
     {
         public TableSelectorViewModel(
-            string entityName,
+            string filterName,
             OmschrijvingContainsNumberDelegate numberDelegate,
             OmschrijvingContainsEntitiesDelegate entitiesDelegate)
         {
-            EntityName = entityName;
+            FilterName = filterName;
             NumberDelegate = numberDelegate;
             EntitiesDelegate = entitiesDelegate;
 
@@ -21,13 +21,13 @@ namespace RCS.DIS.Presenter.ViewModels
             OpenEntitiesCommand = new DelegateCommand(OpenEntities);
         }
 
-        public static readonly DependencyProperty EntityNameProperty =
-            DependencyProperty.Register(nameof(EntityName), typeof(string), typeof(TableSelectorViewModel<entityType>));
+        public static readonly DependencyProperty FilterNameProperty =
+            DependencyProperty.Register(nameof(FilterName), typeof(string), typeof(TableSelectorViewModel<entityType>));
 
-        public string EntityName
+        public string FilterName
         {
-            get { return (string)GetValue(EntityNameProperty); }
-            set { SetValue(EntityNameProperty, value); }
+            get { return (string)GetValue(FilterNameProperty); }
+            set { SetValue(FilterNameProperty, value); }
         }
 
         public delegate int OmschrijvingContainsNumberDelegate(string SearchString);

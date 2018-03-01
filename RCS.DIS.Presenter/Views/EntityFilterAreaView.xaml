@@ -10,7 +10,7 @@
     >
 
     <StackPanel Grid.Row="2" Margin="{StaticResource BlockMargin}">
-        <TextBlock Text="{Binding EntityName}" Style="{StaticResource TextBlockEmphasisStyle}"/>
+        <TextBlock Text="{Binding FilterName}" Style="{StaticResource TextBlockEmphasisStyle}"/>
 
         <!--Use the button to return to the selection tab easily.-->
         <Button Command="{Binding OpenEntitiesCommand}">
