@@ -1,4 +1,5 @@
-﻿using RCS.DIS.Presenter.RetrieveService.ServiceReference;
+﻿using Prism.Commands;
+using RCS.DIS.Presenter.RetrieveService.ServiceReference;
 using RCS.DIS.Presenter.ViewModels;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -14,7 +15,7 @@ namespace RCS.DIS.Presenter
         {
             InitializeComponent();
 
-            SetGeneralViews();
+            SetGeneralFilterViews();
             SetDiagnosesViews();
             SetSpecialismesViews();
             SetZorgactiviteitenViews();
@@ -25,10 +26,16 @@ namespace RCS.DIS.Presenter
         }
 
         RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
+
+        private void OpenCriteriaTab(object entityTab)
+        {
+            ActivityTabControl.SelectedItem = CriteriaTab;
+            CriteriaTabControl.SelectedItem = entityTab;
+        }
         #endregion
 
-        #region General
-        private void SetGeneralViews()
+        #region GeneralFilter
+        private void SetGeneralFilterViews()
         {
             GeneralSelector = new GeneralFilterAreaViewModel();
 
@@ -46,7 +53,11 @@ namespace RCS.DIS.Presenter
         {
             DiagnoseSelector = new TableSelectorViewModel<Diagnose>
                 (nameof(Diagnose), retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
-            { GridColumns = DiagnoseGridColumns(), FilterGridColumns = DiagnoseGridColumns() };
+            {
+                GridColumns = DiagnoseGridColumns(),
+                FilterGridColumns = DiagnoseGridColumns(),
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(DiagnosesTab))
+            };
 
             DiagnosesTab.DataContext = DiagnoseSelector;
             DiagnoseFilterArea.DataContext = DiagnoseSelector;
@@ -75,7 +86,11 @@ namespace RCS.DIS.Presenter
         {
             SpecialismeSelector = new TableSelectorViewModel<Specialisme>
                 (nameof(Specialisme), retrieveServiceClient.SpecialismeOmschrijvingContainsNumber, retrieveServiceClient.SpecialismeOmschrijvingContainsEntities)
-            { GridColumns = SpecialismeGridColumns(), FilterGridColumns = SpecialismeGridColumns() };
+            {
+                GridColumns = SpecialismeGridColumns(),
+                FilterGridColumns = SpecialismeGridColumns(),
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(SpecialismesTab))
+            };
 
             SpecialismesTab.DataContext = SpecialismeSelector;
             SpecialismeFilterArea.DataContext = SpecialismeSelector;
@@ -103,7 +118,11 @@ namespace RCS.DIS.Presenter
         {
             ZorgactiviteitSelector = new TableSelectorViewModel<Zorgactiviteit>
                 (nameof(Zorgactiviteit), retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumber, retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntities)
-            { GridColumns = ZorgactiviteitGridColumns(), FilterGridColumns = ZorgactiviteitGridColumns() };
+            {
+                GridColumns = ZorgactiviteitGridColumns(),
+                FilterGridColumns = ZorgactiviteitGridColumns(),
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(ZorgactiviteitenTab))
+            };
 
             ZorgactiviteitenTab.DataContext = ZorgactiviteitSelector;
             ZorgactiviteitFilterArea.DataContext = ZorgactiviteitSelector;
@@ -132,7 +151,11 @@ namespace RCS.DIS.Presenter
         {
             ZorgproductSelector = new TableSelectorViewModel<Zorgproduct>
                 (nameof(Zorgproduct), retrieveServiceClient.ZorgproductOmschrijvingContainsNumber, retrieveServiceClient.ZorgproductOmschrijvingContainsEntities)
-            { GridColumns = ZorgproductGridColumns(), FilterGridColumns = ZorgproductGridColumns() };
+            {
+                GridColumns = ZorgproductGridColumns(),
+                FilterGridColumns = ZorgproductGridColumns(),
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(ZorgproductenTab))
+            };
 
             ZorgproductenTab.DataContext = ZorgproductSelector;
             ZorgproductFilterArea.DataContext = ZorgproductSelector;

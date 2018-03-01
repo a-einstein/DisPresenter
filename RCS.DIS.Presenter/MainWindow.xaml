@@ -11,8 +11,8 @@
     >
 
     <Grid>
-        <TabControl>
-            <TabItem Header="Criteria">
+        <TabControl Name="ActivityTabControl">
+            <TabItem Header="Criteria" Name="CriteriaTab">
                 <TabControl Name="CriteriaTabControl">
                     <TabItem Header="Diagnoses" Name="DiagnosesTab">
                         <Views:TableSelectorView/>

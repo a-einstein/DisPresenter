@@ -18,7 +18,6 @@ namespace RCS.DIS.Presenter.ViewModels
             EntitiesDelegate = entitiesDelegate;
 
             StartMessage = "Enter part of the Omschrijving to look for.";
-            OpenEntitiesCommand = new DelegateCommand(OpenEntities);
         }
 
         public static readonly DependencyProperty FilterNameProperty =
@@ -80,13 +79,6 @@ namespace RCS.DIS.Presenter.ViewModels
         {
             get { return (ICommand)GetValue(OpenEntitiesCommandProperty); }
             set { SetValue(OpenEntitiesCommandProperty, value); }
-        }
-
-        // Note this only works in codebehind.
-        // Doing so with just bindings seems at least awkward, even with a CommandParameter.
-        public void OpenEntities()
-        {
-            //CriteriaTabControl.SelectedItem = DiagnosesTab;
         }
 
         public static readonly DependencyProperty SelectedProperty =

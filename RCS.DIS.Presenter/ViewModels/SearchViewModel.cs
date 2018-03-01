@@ -11,6 +11,7 @@ namespace RCS.DIS.Presenter.ViewModels
         protected SearchViewModel()
         {
             // TODO add enablement.
+            // TODO Would like to assign as default.
             SearchCommand = new DelegateCommand(Search);
         }
 
