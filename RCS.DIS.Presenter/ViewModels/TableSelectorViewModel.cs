@@ -59,11 +59,13 @@ namespace RCS.DIS.Presenter.ViewModels
         {
             var number = NumberDelegate(SearchString);
 
+            ResultMessage = $"Found {number}.";
+
             if (number == 0 || number > maximumRecords)
-                ResultMessage = $"Found {number}. Please refine your query.";
+                ResultMessage = $"{ResultMessage}\nPlease refine your query.";
             else
             {
-                ResultMessage = $"Found {number}. Please select a diagnose, it will be added to the Filter tab.";
+                ResultMessage = $"{ResultMessage}\nPlease select an entry, it will be added to the Filter tab.";
 
                 Entities = EntitiesDelegate(SearchString);
             }

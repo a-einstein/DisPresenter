@@ -29,8 +29,11 @@ namespace RCS.DIS.Presenter.ViewModels
                 ZorgproductSelector.Selected.ZorgproductCode,
                 GeneralSelector.VersieSelected);
 
+            // TODO Someway this does not work.
+            ResultMessage = $"Found {number}.";
+
             if (number == 0 || number > maximumRecords)
-                ResultMessage = $"Found {number}. Please refine your query.";
+                ResultMessage = $"{ResultMessage}\nPlease refine your query.";
             else
                 Entities = retrieveServiceClient.DbcOverzichtEntities(
                     GeneralSelector.JaarSelected,

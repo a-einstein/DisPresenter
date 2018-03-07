@@ -30,15 +30,18 @@ namespace RCS.DIS.Presenter.ViewModels
                 ZorgactiviteitSelector.Selected.ZorgactiviteitCode,
                 GeneralSelector.VersieSelected);
 
+            // TODO Someway this does not work.
+            ResultMessage = $"Found {number}.";
+
             if (number == 0 || number > maximumRecords)
-                ResultMessage = $"Found {number}. Please refine your query.";
+                ResultMessage = $"{ResultMessage}\nPlease refine your query.";
             else
                 Entities = retrieveServiceClient.DbcProfielEntities(
                     GeneralSelector.JaarSelected,
                     SpecialismeSelector.Selected.SpecialismeCode,
                     DiagnoseSelector.Selected.DiagnoseCode,
                     ZorgproductSelector.Selected.ZorgproductCode,
-                ZorgactiviteitSelector.Selected.ZorgactiviteitCode,
+                    ZorgactiviteitSelector.Selected.ZorgactiviteitCode,
                     GeneralSelector.VersieSelected);
         }
     }

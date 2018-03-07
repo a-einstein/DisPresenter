@@ -27,7 +27,7 @@
             <Button Content="Search" Width="100" Command="{Binding SearchCommand}" IsDefault="True"/>
         </StackPanel>
 
-        <TextBlock Grid.Row="2" Text="{Binding ResultMessage}" Style="{StaticResource TextBlockEmphasisStyle}" />
+        <TextBlock Grid.Row="2" Text="{Binding ResultMessage}" Style="{StaticResource TextBlockEmphasisStyle}" TextWrapping="Wrap" />
 
         <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
         <DataGrid Grid.Row="3" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" Behaviors:DataGridColumnsBehavior.BindableColumns="{Binding GridColumns}" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding Selected, Mode=OneWayToSource}"/>

@@ -38,8 +38,8 @@ namespace RCS.DIS.Presenter.ViewModels
 
         public void Search()
         {
-            Entities = null;
             ResultMessage = null;
+            Entities = null;
 
             try
             {
