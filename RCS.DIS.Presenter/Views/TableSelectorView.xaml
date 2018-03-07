@@ -17,10 +17,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="{Binding StartMessage}" Style="{StaticResource TextBlockEmphasisStyle}" />
+        <TextBlock Grid.Row="0" Text="{Binding StartMessage}" Style="{StaticResource TextBlockEmphasisStyle}" TextWrapping="Wrap" />
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBlock  Text="Omschrijving contains"/>
+            <TextBlock  Text="Search for"/>
             <TextBox Width="200" Text="{Binding SearchString}"/>
 
             <!--TODO The IsDefault does not work, probably because of the TextBox.-->

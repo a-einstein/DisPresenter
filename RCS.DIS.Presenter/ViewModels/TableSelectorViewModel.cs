@@ -16,7 +16,7 @@ namespace RCS.DIS.Presenter.ViewModels
             NumberDelegate = numberDelegate;
             EntitiesDelegate = entitiesDelegate;
 
-            StartMessage = "Enter part of the Omschrijving to look for.";
+            StartMessage = "Enter parts of the Omschrijving to look for, separated by spaces.\nEnclose parts containing spaces by double quotes.";
         }
 
         public static readonly DependencyProperty FilterNameProperty =
