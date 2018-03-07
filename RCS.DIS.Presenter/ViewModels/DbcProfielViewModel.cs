@@ -20,10 +20,8 @@ namespace RCS.DIS.Presenter.ViewModels
 
         protected TableSelectorViewModel<Zorgactiviteit> ZorgactiviteitSelector;
 
-        public override void Search()
+        protected override void Retrieve()
         {
-            base.Search();
-
             var number = retrieveServiceClient.DbcProfielNumber(
                 GeneralSelector.JaarSelected,
                 SpecialismeSelector.Selected.SpecialismeCode,

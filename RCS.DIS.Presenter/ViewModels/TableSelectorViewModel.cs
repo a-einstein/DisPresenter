@@ -1,5 +1,4 @@
-﻿using Prism.Commands;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -56,10 +55,8 @@ namespace RCS.DIS.Presenter.ViewModels
             set { SetValue(SearchStringProperty, value); }
         }
 
-        public override void Search()
+        protected override void Retrieve()
         {
-            base.Search();
-
             var number = NumberDelegate(SearchString);
 
             if (number == 0 || number > maximumRecords)

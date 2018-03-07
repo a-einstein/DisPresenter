@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,10 +36,32 @@ namespace RCS.DIS.Presenter.ViewModels
 
         protected int maximumRecords = 200;
 
-        public virtual void Search()
+        public void Search()
         {
             Entities = null;
             ResultMessage = null;
+
+            try
+            {
+                Retrieve();
+            }
+            catch (Exception exception)
+            {
+                HandleException(exception);
+            }
+        }
+
+        protected abstract void Retrieve();
+
+        void HandleException(Exception exception)
+        {
+            const string applicationName = "DIS Presenter";
+
+            // Pity the No button cannot be made default.
+            var result = MessageBox.Show($"There is a problem using our data service.\n\nDo you want the see the details?", $"{applicationName} - Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
+
+            if (result == MessageBoxResult.Yes)
+                MessageBox.Show(exception.Message, $"{applicationName} - Details", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public static readonly DependencyProperty EntitiesProperty =

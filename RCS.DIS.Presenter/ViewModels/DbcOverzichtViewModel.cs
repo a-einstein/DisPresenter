@@ -20,10 +20,8 @@ namespace RCS.DIS.Presenter.ViewModels
             ZorgproductSelector = zorgproductSelector;
         }
 
-        public override void Search()
+        protected override void Retrieve()
         {
-            base.Search();
-
             var number = retrieveServiceClient.DbcOverzichtNumber(
                 GeneralSelector.JaarSelected,
                 SpecialismeSelector.Selected.SpecialismeCode,
