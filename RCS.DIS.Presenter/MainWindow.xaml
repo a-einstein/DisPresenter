@@ -22,11 +22,11 @@
                         <Views:TableSelectorView/>
                     </TabItem>
 
-                    <TabItem Header="Activiteiten" Name="ZorgactiviteitenTab">
+                    <TabItem Header="Producten" Name="ZorgproductenTab">
                         <Views:TableSelectorView/>
                     </TabItem>
 
-                    <TabItem Header="Producten" Name="ZorgproductenTab">
+                    <TabItem Header="Activiteiten" Name="ZorgactiviteitenTab">
                         <Views:TableSelectorView/>
                     </TabItem>
                 </TabControl>
@@ -40,9 +40,9 @@
 
                     <Views:EntityFilterAreaView x:Name="SpecialismeFilterArea"/>
 
-                    <Views:EntityFilterAreaView x:Name="ZorgactiviteitFilterArea"/>
-
                     <Views:EntityFilterAreaView x:Name="ZorgproductFilterArea"/>
+
+                    <Views:EntityFilterAreaView x:Name="ZorgactiviteitFilterArea"/>
                 </StackPanel>
             </TabItem>
 

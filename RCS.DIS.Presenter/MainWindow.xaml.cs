@@ -121,7 +121,8 @@ namespace RCS.DIS.Presenter
             {
                 GridColumns = ZorgactiviteitGridColumns(),
                 FilterGridColumns = ZorgactiviteitGridColumns(),
-                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(ZorgactiviteitenTab))
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(ZorgactiviteitenTab)),
+                Note= $"Note there does not need to be a selection here for {DbcOverzichtenTab.Header}."
             };
 
             ZorgactiviteitenTab.DataContext = ZorgactiviteitSelector;

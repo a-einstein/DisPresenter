@@ -1,13 +1,14 @@
 ﻿using Prism.Commands;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace RCS.DIS.Presenter.ViewModels
 {
-    public abstract class SearchViewModel<entityType> : DependencyObject
+    public abstract class SearchViewModel<entityType> : DependencyObject, INotifyPropertyChanged
     {
         protected SearchViewModel()
         {
@@ -36,6 +37,8 @@ namespace RCS.DIS.Presenter.ViewModels
 
         protected int maximumRecords = 200;
 
+        // TODO Need enablement for required keys.
+        // TODO Handle empty keys as far as useful.
         public void Search()
         {
             ResultMessage = null;
@@ -70,7 +73,13 @@ namespace RCS.DIS.Presenter.ViewModels
         public entityType[] Entities
         {
             get { return (entityType[])GetValue(EntitiesProperty); }
-            set { SetValue(EntitiesProperty, value); }
+            set
+            {
+                SetValue(EntitiesProperty, value);
+
+                // TODO Why is this just needed for this property and in case of overviews?
+                RaisePropertyChanged(nameof(Entities));
+            }
         }
 
         public static readonly DependencyProperty StartMessageProperty =
@@ -89,6 +98,13 @@ namespace RCS.DIS.Presenter.ViewModels
         {
             get { return (string)GetValue(ResultMessageProperty); }
             set { SetValue(ResultMessageProperty, value); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

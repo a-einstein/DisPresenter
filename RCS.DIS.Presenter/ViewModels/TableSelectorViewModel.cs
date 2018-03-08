@@ -28,6 +28,15 @@ namespace RCS.DIS.Presenter.ViewModels
             set { SetValue(FilterNameProperty, value); }
         }
 
+        public static readonly DependencyProperty NoteProperty =
+            DependencyProperty.Register(nameof(Note), typeof(string), typeof(TableSelectorViewModel<entityType>));
+
+        public string Note
+        {
+            get { return (string)GetValue(NoteProperty); }
+            set { SetValue(NoteProperty, value); }
+        }
+
         public delegate int OmschrijvingContainsNumberDelegate(string SearchString);
         private OmschrijvingContainsNumberDelegate NumberDelegate;
 
