@@ -5,22 +5,18 @@ using System.Windows.Input;
 
 namespace RCS.DIS.Presenter.ViewModels
 {
-    public class TableSelectorViewModel<entityType> : SearchViewModel<entityType>
+    abstract public class EntitySelectorViewModel<entityType> : EntitiesSearchViewModel<entityType>
     {
-        public TableSelectorViewModel(
-            string filterName,
-            OmschrijvingContainsNumberDelegate numberDelegate,
-            OmschrijvingContainsEntitiesDelegate entitiesDelegate)
+        public EntitySelectorViewModel()
         {
-            FilterName = filterName;
-            NumberDelegate = numberDelegate;
-            EntitiesDelegate = entitiesDelegate;
-
             StartMessage = "Enter parts of the Omschrijving to look for, separated by spaces.\nEnclose parts containing spaces by double quotes.";
+
+            // Note the same collection cannot be shared.
+            FilterGridColumns = GetGridColumns();
         }
 
         public static readonly DependencyProperty FilterNameProperty =
-            DependencyProperty.Register(nameof(FilterName), typeof(string), typeof(TableSelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(FilterName), typeof(string), typeof(EntitySelectorViewModel<entityType>));
 
         public string FilterName
         {
@@ -29,7 +25,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty NoteProperty =
-            DependencyProperty.Register(nameof(Note), typeof(string), typeof(TableSelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(Note), typeof(string), typeof(EntitySelectorViewModel<entityType>));
 
         public string Note
         {
@@ -38,16 +34,16 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public delegate int OmschrijvingContainsNumberDelegate(string SearchString);
-        private OmschrijvingContainsNumberDelegate NumberDelegate;
+        abstract protected OmschrijvingContainsNumberDelegate NumberDelegate { get; }
 
         public delegate entityType[] OmschrijvingContainsEntitiesDelegate(string SearchString);
-        private OmschrijvingContainsEntitiesDelegate EntitiesDelegate;
+        abstract protected OmschrijvingContainsEntitiesDelegate EntitiesDelegate { get; }
 
         public static readonly DependencyProperty FilterGridColumnsProperty =
-            DependencyProperty.Register(nameof(FilterGridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(TableSelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(FilterGridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(EntitySelectorViewModel<entityType>));
 
         /// <summary>
-        /// Note the columns cannot be shared. Set 2 equal collections.
+        /// Note the columns cannot be shared. Set 2 seprate but equal collections.
         /// </summary>
         public ObservableCollection<DataGridColumn> FilterGridColumns
         {
@@ -56,7 +52,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty SearchStringProperty =
-            DependencyProperty.Register(nameof(SearchString), typeof(string), typeof(TableSelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(SearchString), typeof(string), typeof(EntitySelectorViewModel<entityType>));
 
         public string SearchString
         {
@@ -81,7 +77,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty OpenEntitiesCommandProperty =
-            DependencyProperty.Register(nameof(OpenEntitiesCommand), typeof(ICommand), typeof(TableSelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(OpenEntitiesCommand), typeof(ICommand), typeof(EntitySelectorViewModel<entityType>));
 
         public ICommand OpenEntitiesCommand
         {
@@ -90,7 +86,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty SelectedProperty =
-            DependencyProperty.Register(nameof(Selected), typeof(entityType), typeof(TableSelectorViewModel<entityType>), new PropertyMetadata(new PropertyChangedCallback(SetSelectedSource)));
+            DependencyProperty.Register(nameof(Selected), typeof(entityType), typeof(EntitySelectorViewModel<entityType>), new PropertyMetadata(new PropertyChangedCallback(SetSelectedSource)));
 
         public entityType Selected
         {
@@ -100,12 +96,12 @@ namespace RCS.DIS.Presenter.ViewModels
 
         private static void SetSelectedSource(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var viewModel = d as TableSelectorViewModel<entityType>;
+            var viewModel = d as EntitySelectorViewModel<entityType>;
             viewModel.SelectedSource = new entityType[] { viewModel.Selected };
         }
 
         public static readonly DependencyProperty SelectedSourceProperty =
-            DependencyProperty.Register(nameof(SelectedSource), typeof(entityType[]), typeof(TableSelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(SelectedSource), typeof(entityType[]), typeof(EntitySelectorViewModel<entityType>));
 
         public entityType[] SelectedSource
         {

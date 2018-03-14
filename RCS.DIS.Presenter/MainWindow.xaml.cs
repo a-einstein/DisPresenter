@@ -1,10 +1,7 @@
 ﻿using Prism.Commands;
 using RCS.DIS.Presenter.RetrieveService.ServiceReference;
 using RCS.DIS.Presenter.ViewModels;
-using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace RCS.DIS.Presenter
 {
@@ -16,6 +13,7 @@ namespace RCS.DIS.Presenter
             InitializeComponent();
 
             SetGeneralFilterViews();
+
             SetDiagnosesViews();
             SetSpecialismesViews();
             SetZorgactiviteitenViews();
@@ -24,8 +22,6 @@ namespace RCS.DIS.Presenter
             SetDbcOverzichtenViews();
             SetDbcProfielenViews();
         }
-
-        RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
 
         private void OpenCriteriaTab(object entityTab)
         {
@@ -37,149 +33,73 @@ namespace RCS.DIS.Presenter
         #region GeneralFilter
         private void SetGeneralFilterViews()
         {
-            GeneralSelector = new GeneralFilterAreaViewModel();
+            GeneralSelector = new GeneralFilterViewModel();
 
-            GeneralSelector.Jaren = retrieveServiceClient.Jaren();
-            GeneralSelector.Versies = retrieveServiceClient.Versies();
-
-            VersieFilterArea.DataContext = GeneralSelector;
+            generalFilterArea.ViewModel = GeneralSelector;
         }
 
-        public GeneralFilterAreaViewModel GeneralSelector { get; private set; }
-        #endregion 
+        public GeneralFilterViewModel GeneralSelector { get; private set; }
+        #endregion
 
         #region Diagnoses
         private void SetDiagnosesViews()
         {
-            DiagnoseSelector = new TableSelectorViewModel<Diagnose>
-                (nameof(Diagnose), retrieveServiceClient.DiagnoseOmschrijvingContainsNumber, retrieveServiceClient.DiagnoseOmschrijvingContainsEntities)
+            DiagnoseSelector = new DiagnoseSelectorViewModel()
             {
-                GridColumns = DiagnoseGridColumns(),
-                FilterGridColumns = DiagnoseGridColumns(),
-                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(DiagnosesTab))
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(diagnosesView))
             };
 
-            DiagnosesTab.DataContext = DiagnoseSelector;
-            DiagnoseFilterArea.DataContext = DiagnoseSelector;
+            diagnosesView.ViewModel = DiagnoseSelector;
+            diagnoseView.ViewModel = DiagnoseSelector;
         }
 
-        public TableSelectorViewModel<Diagnose> DiagnoseSelector { get; private set; }
-
-        ObservableCollection<DataGridColumn> DiagnoseGridColumns()
-        {
-            var columns = new ObservableCollection<DataGridColumn>
-            {
-                new DataGridTextColumn() { Binding= new Binding("DiagnoseCode"), Header="Diagnose" },
-                new DataGridTextColumn() { Binding= new Binding("SpecialismeCode"), Header="Specialisme" },
-                new DataGridTextColumn() { Binding= new Binding("Omschrijving"), Header="Omschrijving" },
-                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
-                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
-                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
-            };
-
-            return columns;
-        }
+        public EntitySelectorViewModel<Diagnose> DiagnoseSelector { get; private set; }
         #endregion
 
         #region Specialismes
         private void SetSpecialismesViews()
         {
-            SpecialismeSelector = new TableSelectorViewModel<Specialisme>
-                (nameof(Specialisme), retrieveServiceClient.SpecialismeOmschrijvingContainsNumber, retrieveServiceClient.SpecialismeOmschrijvingContainsEntities)
+            SpecialismeSelector = new SpecialismeSelectorViewModel
             {
-                GridColumns = SpecialismeGridColumns(),
-                FilterGridColumns = SpecialismeGridColumns(),
-                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(SpecialismesTab))
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(specialismesView))
             };
 
-            SpecialismesTab.DataContext = SpecialismeSelector;
-            SpecialismeFilterArea.DataContext = SpecialismeSelector;
+            specialismesView.ViewModel = SpecialismeSelector;
+            specialismeView.ViewModel = SpecialismeSelector;
         }
 
-        public TableSelectorViewModel<Specialisme> SpecialismeSelector { get; private set; }
-
-        ObservableCollection<DataGridColumn> SpecialismeGridColumns()
-        {
-            var columns = new ObservableCollection<DataGridColumn>
-            {
-                new DataGridTextColumn() { Binding= new Binding("SpecialismeCode"), Header="Specialisme" },
-                new DataGridTextColumn() { Binding= new Binding("Omschrijving"), Header="Omschrijving" },
-                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
-                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
-                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
-            };
-
-            return columns;
-        }
+        public EntitySelectorViewModel<Specialisme> SpecialismeSelector { get; private set; }
         #endregion
 
         #region Zorgactiviteiten
         private void SetZorgactiviteitenViews()
         {
-            ZorgactiviteitSelector = new TableSelectorViewModel<Zorgactiviteit>
-                (nameof(Zorgactiviteit), retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumber, retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntities)
+            ZorgactiviteitSelector = new ZorgactiviteitSelectorViewModel()
             {
-                GridColumns = ZorgactiviteitGridColumns(),
-                FilterGridColumns = ZorgactiviteitGridColumns(),
-                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(ZorgactiviteitenTab)),
-                Note= $"Note there does not need to be a selection here for {DbcOverzichtenTab.Header}."
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(zorgactiviteitenView)),
+                Note = $"Note there does not need to be a selection here for {dbcOverzichtenTab.Header}."
             };
 
-            ZorgactiviteitenTab.DataContext = ZorgactiviteitSelector;
-            ZorgactiviteitFilterArea.DataContext = ZorgactiviteitSelector;
+            zorgactiviteitenView.ViewModel = ZorgactiviteitSelector;
+            zorgactiviteitView.ViewModel = ZorgactiviteitSelector;
         }
 
-        public TableSelectorViewModel<Zorgactiviteit> ZorgactiviteitSelector { get; private set; }
-
-        ObservableCollection<DataGridColumn> ZorgactiviteitGridColumns()
-        {
-            var columns = new ObservableCollection<DataGridColumn>
-            {
-                new DataGridTextColumn() { Binding= new Binding("ZorgactiviteitCode"), Header="Activiteit" },
-                new DataGridTextColumn() { Binding= new Binding("Omschrijving"), Header="Omschrijving" },
-                new DataGridTextColumn() { Binding= new Binding("ZorgprofielklasseCode"), Header="Klasse"},
-                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
-                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
-                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
-            };
-
-            return columns;
-        }
+        public EntitySelectorViewModel<Zorgactiviteit> ZorgactiviteitSelector { get; private set; }
         #endregion
 
         #region Zorgproducten
         private void SetZorgproductenViews()
         {
-            ZorgproductSelector = new TableSelectorViewModel<Zorgproduct>
-                (nameof(Zorgproduct), retrieveServiceClient.ZorgproductOmschrijvingContainsNumber, retrieveServiceClient.ZorgproductOmschrijvingContainsEntities)
+            ZorgproductSelector = new ZorgproductSelectorViewModel()
             {
-                GridColumns = ZorgproductGridColumns(),
-                FilterGridColumns = ZorgproductGridColumns(),
-                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(ZorgproductenTab))
+                OpenEntitiesCommand = new DelegateCommand(() => OpenCriteriaTab(zorgproductenView))
             };
 
-            ZorgproductenTab.DataContext = ZorgproductSelector;
-            ZorgproductFilterArea.DataContext = ZorgproductSelector;
+            zorgproductenView.ViewModel = ZorgproductSelector;
+            zorgproductView.ViewModel = ZorgproductSelector;
         }
 
-        public TableSelectorViewModel<Zorgproduct> ZorgproductSelector { get; private set; }
-
-        ObservableCollection<DataGridColumn> ZorgproductGridColumns()
-        {
-            var columns = new ObservableCollection<DataGridColumn>
-            {
-                new DataGridTextColumn() { Binding= new Binding("ZorgproductCode"), Header="Product" },
-                new DataGridTextColumn() { Binding= new Binding("OmschrijvingConsument"), Header="Consumentenomschrijving" },
-                new DataGridTextColumn() { Binding= new Binding("OmschrijvingLatijn"), Header="Latijnse omschrijving" },
-                new DataGridTextColumn() { Binding= new Binding("DeclaratiecodeVerzekerd"), Header="Verzekerde code"},
-                new DataGridTextColumn() { Binding= new Binding("DeclaratiecodeOnverzekerd"), Header="Onverzekerde code"},
-                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
-                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
-                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
-            };
-
-            return columns;
-        }
+        public EntitySelectorViewModel<Zorgproduct> ZorgproductSelector { get; private set; }
         #endregion
 
         #region DbcOverzichten
@@ -189,33 +109,9 @@ namespace RCS.DIS.Presenter
                 GeneralSelector,
                 DiagnoseSelector,
                 SpecialismeSelector,
-                ZorgproductSelector)
-            { GridColumns = DbcOverzichtGridColumns() };
+                ZorgproductSelector);
 
-            DbcOverzichtenTab.DataContext = viewModel;
-        }
-
-        ObservableCollection<DataGridColumn> DbcOverzichtGridColumns()
-        {
-            var columns = new ObservableCollection<DataGridColumn>
-            {
-                new DataGridTextColumn() { Binding= new Binding("Jaar"), Header="Jaar" },
-                new DataGridTextColumn() { Binding= new Binding("SpecialismeCode"), Header="Specialisme" },
-                new DataGridTextColumn() { Binding= new Binding("PatientenPerSpecialisme"), Header="Pat/Spec" },
-                new DataGridTextColumn() { Binding= new Binding("SubtrajectenPerSpecialisme"), Header="Subtraj/Spec" },
-                new DataGridTextColumn() { Binding= new Binding("DiagnoseCode"), Header="Diagnose" },
-                new DataGridTextColumn() { Binding= new Binding("PatientenPerDiagnose"), Header="Pat/Diag" },
-                new DataGridTextColumn() { Binding= new Binding("SubtrajectenPerDiagnose"), Header="Subtraj/Diag" },
-                new DataGridTextColumn() { Binding= new Binding("ZorgproductCode"), Header="Product" },
-                new DataGridTextColumn() { Binding= new Binding("PatientenPerZorgproduct"), Header="Pat/Prod" },
-                new DataGridTextColumn() { Binding= new Binding("SubtrajectenPerZorgproduct"), Header="Subtraj/Prod" },
-                new DataGridTextColumn() { Binding= new Binding("Verkoopprijs"), Header="Prijs" },
-                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
-                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
-                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
-            };
-
-            return columns;
+            dbcOverzichtenView.ViewModel = viewModel;
         }
         #endregion
 
@@ -227,30 +123,9 @@ namespace RCS.DIS.Presenter
                 DiagnoseSelector,
                 SpecialismeSelector,
                 ZorgactiviteitSelector,
-                ZorgproductSelector)
-            { GridColumns = DbcProfielGridColumns() };
+                ZorgproductSelector);
 
-            DbcProfielenTab.DataContext = viewModel;
-        }
-
-        ObservableCollection<DataGridColumn> DbcProfielGridColumns()
-        {
-            var columns = new ObservableCollection<DataGridColumn>
-            {
-                new DataGridTextColumn() { Binding= new Binding("Jaar"), Header="Jaar" },
-                new DataGridTextColumn() { Binding= new Binding("SpecialismeCode"), Header="Specialisme" },
-                new DataGridTextColumn() { Binding= new Binding("DiagnoseCode"), Header="Diagnose" },
-                new DataGridTextColumn() { Binding= new Binding("ZorgproductCode"), Header="Product" },
-                new DataGridTextColumn() { Binding= new Binding("Patienten"), Header="Patienten" },
-                new DataGridTextColumn() { Binding= new Binding("Subtrajecten"), Header="Subtrajecten" },
-                new DataGridTextColumn() { Binding= new Binding("ZorgactiviteitCode"), Header="Activiteit" },
-                new DataGridTextColumn() { Binding= new Binding("Zorgactiviteiten"), Header="Activiteiten" },
-                new DataGridTextColumn() { Binding= new Binding("Peildatum"), Header="Peildatum"},
-                new DataGridTextColumn() { Binding= new Binding("Bestandsdatum"), Header="Bestandsdatum" },
-                new DataGridTextColumn() { Binding= new Binding("Versie"), Header="Versie" }
-            };
-
-            return columns;
+            dbcProfielenView.ViewModel = viewModel;
         }
         #endregion
     }

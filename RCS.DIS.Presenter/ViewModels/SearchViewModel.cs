@@ -1,14 +1,12 @@
 ﻿using Prism.Commands;
-using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+using RCS.DIS.Presenter.RetrieveService.ServiceReference;
+using System.ServiceModel;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace RCS.DIS.Presenter.ViewModels
 {
-    public abstract class SearchViewModel<entityType> : DependencyObject, INotifyPropertyChanged
+    public abstract class SearchViewModel : ViewModel
     {
         protected SearchViewModel()
         {
@@ -17,17 +15,22 @@ namespace RCS.DIS.Presenter.ViewModels
             SearchCommand = new DelegateCommand(Search);
         }
 
-        public static readonly DependencyProperty GridColumnsProperty =
-            DependencyProperty.Register(nameof(GridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(TableSelectorViewModel<entityType>));
+        static protected RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
 
-        public ObservableCollection<DataGridColumn> GridColumns
+        private static void CheckService()
         {
-            get { return (ObservableCollection<DataGridColumn>)GetValue(GridColumnsProperty); }
-            set { SetValue(GridColumnsProperty, value); }
+            // TODO This works when starting up without an active service, but it fails when interrupted with "unsecured or incorrectly secured fault was received from the other party".
+            if (retrieveServiceClient.State == CommunicationState.Faulted)
+            {
+                retrieveServiceClient.Abort();
+
+                // There seems to be no other way to recover.
+                retrieveServiceClient = new RetrieveServiceClient();
+            }
         }
 
         public static readonly DependencyProperty SearchCommandProperty =
-             DependencyProperty.Register(nameof(SearchCommand), typeof(ICommand), typeof(TableSelectorViewModel<entityType>));
+             DependencyProperty.Register(nameof(SearchCommand), typeof(ICommand), typeof(SearchViewModel));
 
         public ICommand SearchCommand
         {
@@ -35,76 +38,13 @@ namespace RCS.DIS.Presenter.ViewModels
             set { SetValue(SearchCommandProperty, value); }
         }
 
-        protected int maximumRecords = 200;
-
-        // TODO Need enablement for required keys.
-        // TODO Handle empty keys as far as useful.
-        public void Search()
+        public virtual void Search()
         {
-            ResultMessage = null;
-            Entities = null;
+            CheckService();
 
-            try
-            {
-                Retrieve();
-            }
-            catch (Exception exception)
-            {
-                HandleException(exception);
-            }
+            Retrieve();
         }
 
         protected abstract void Retrieve();
-
-        void HandleException(Exception exception)
-        {
-            const string applicationName = "DIS Presenter";
-
-            // Pity the No button cannot be made default.
-            var result = MessageBox.Show($"There is a problem using our data service.\n\nDo you want the see the details?", $"{applicationName} - Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
-
-            if (result == MessageBoxResult.Yes)
-                MessageBox.Show(exception.Message, $"{applicationName} - Details", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        public static readonly DependencyProperty EntitiesProperty =
-            DependencyProperty.Register(nameof(Entities), typeof(entityType[]), typeof(TableSelectorViewModel<entityType>));
-
-        public entityType[] Entities
-        {
-            get { return (entityType[])GetValue(EntitiesProperty); }
-            set
-            {
-                SetValue(EntitiesProperty, value);
-
-                // TODO Why is this just needed for this property and in case of overviews?
-                RaisePropertyChanged(nameof(Entities));
-            }
-        }
-
-        public static readonly DependencyProperty StartMessageProperty =
-            DependencyProperty.Register(nameof(StartMessage), typeof(string), typeof(TableSelectorViewModel<entityType>));
-
-        public string StartMessage
-        {
-            get { return (string)GetValue(StartMessageProperty); }
-            set { SetValue(StartMessageProperty, value); }
-        }
-
-        public static readonly DependencyProperty ResultMessageProperty =
-            DependencyProperty.Register(nameof(ResultMessage), typeof(string), typeof(TableSelectorViewModel<entityType>));
-
-        public string ResultMessage
-        {
-            get { return (string)GetValue(ResultMessageProperty); }
-            set { SetValue(ResultMessageProperty, value); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

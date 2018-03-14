@@ -1,12 +1,9 @@
-﻿<UserControl
-    x:Class="RCS.DIS.Presenter.Views.TableSelectorView"
+﻿<local:View 
+    x:Class="RCS.DIS.Presenter.Views.EntitySelectorView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:RCS.DIS.Presenter.Views"
     xmlns:Behaviors="clr-namespace:RCS.DIS.Presenter.Behaviors"
-    mc:Ignorable="d" 
-    d:DesignHeight="300" d:DesignWidth="300"
     >
 
     <Grid>
@@ -35,4 +32,4 @@
         <!-- Mapping was needed to suppress ExtensionData, control order, and additionally alter headers.-->
         <DataGrid Grid.Row="4" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" Behaviors:DataGridColumnsBehavior.BindableColumns="{Binding GridColumns}" IsReadOnly="True" SelectionMode="Single" SelectedValue="{Binding Selected, Mode=OneWayToSource}"/>
     </Grid>
-</UserControl>
+</local:View>

@@ -2,20 +2,39 @@
 
 namespace RCS.DIS.Presenter.ViewModels
 {
-    public class GeneralFilterAreaViewModel : DependencyObject
+    public class GeneralFilterViewModel : SearchViewModel
     {
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            Search();
+        }
+
+        protected override void Retrieve()
+        {
+            Jaren = retrieveServiceClient.Jaren();
+            Versies = retrieveServiceClient.Versies();
+        }
+
         #region Jaren
         public static readonly DependencyProperty JarenProperty =
-            DependencyProperty.Register(nameof(Jaren), typeof(short[]), typeof(GeneralFilterAreaViewModel));
+            DependencyProperty.Register(nameof(Jaren), typeof(short[]), typeof(GeneralFilterViewModel));
 
         public short[] Jaren
         {
             get { return (short[])GetValue(JarenProperty); }
-            set { SetValue(JarenProperty, value); }
+            set
+            {
+                SetValue(JarenProperty, value);
+
+                // TODO Why is this just needed for this property?
+                RaisePropertyChanged(nameof(Versies));
+            }
         }
 
         public static readonly DependencyProperty JaarSelectedProperty =
-            DependencyProperty.Register(nameof(JaarSelected), typeof(short), typeof(GeneralFilterAreaViewModel));
+            DependencyProperty.Register(nameof(JaarSelected), typeof(short), typeof(GeneralFilterViewModel));
 
         public short JaarSelected
         {
@@ -31,7 +50,13 @@ namespace RCS.DIS.Presenter.ViewModels
         public string[] Versies
         {
             get { return (string[])GetValue(VersiesProperty); }
-            set { SetValue(VersiesProperty, value); }
+            set
+            {
+                SetValue(VersiesProperty, value);
+
+                // TODO Why is this just needed for this property?
+                RaisePropertyChanged(nameof(Versies));
+            }
         }
 
         public static readonly DependencyProperty VersieSelectedProperty =

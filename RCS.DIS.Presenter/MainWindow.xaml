@@ -14,46 +14,46 @@
         <TabControl Name="ActivityTabControl">
             <TabItem Header="Criteria" Name="CriteriaTab">
                 <TabControl Name="CriteriaTabControl">
-                    <TabItem Header="Diagnoses" Name="DiagnosesTab">
-                        <Views:TableSelectorView/>
+                    <TabItem Header="Diagnoses">
+                        <Views:EntitySelectorView x:Name="diagnosesView"/>
                     </TabItem>
 
-                    <TabItem Header="Specialismes" Name="SpecialismesTab">
-                        <Views:TableSelectorView/>
+                    <TabItem Header="Specialismes">
+                        <Views:EntitySelectorView x:Name="specialismesView"/>
                     </TabItem>
 
-                    <TabItem Header="Producten" Name="ZorgproductenTab">
-                        <Views:TableSelectorView/>
+                    <TabItem Header="Producten">
+                        <Views:EntitySelectorView x:Name="zorgproductenView"/>
                     </TabItem>
 
-                    <TabItem Header="Activiteiten" Name="ZorgactiviteitenTab">
-                        <Views:TableSelectorView/>
+                    <TabItem Header="Activiteiten">
+                        <Views:EntitySelectorView x:Name="zorgactiviteitenView"/>
                     </TabItem>
                 </TabControl>
             </TabItem>
 
             <TabItem Header="Filter">
                 <StackPanel>
-                    <Views:GeneralFilterAreaView x:Name="VersieFilterArea"/>
+                    <Views:GeneralFilterView x:Name="generalFilterArea"/>
 
-                    <Views:EntityFilterAreaView x:Name="DiagnoseFilterArea"/>
+                    <Views:EntityFilterView x:Name="diagnoseView"/>
 
-                    <Views:EntityFilterAreaView x:Name="SpecialismeFilterArea"/>
+                    <Views:EntityFilterView x:Name="specialismeView"/>
 
-                    <Views:EntityFilterAreaView x:Name="ZorgproductFilterArea"/>
+                    <Views:EntityFilterView x:Name="zorgproductView"/>
 
-                    <Views:EntityFilterAreaView x:Name="ZorgactiviteitFilterArea"/>
+                    <Views:EntityFilterView x:Name="zorgactiviteitView"/>
                 </StackPanel>
             </TabItem>
 
             <TabItem Header="Search">
                 <TabControl>
-                    <TabItem Header="DBC's" x:Name="DbcOverzichtenTab">
-                        <Views:SearchView/>
+                    <TabItem Header="DBC's" Name="dbcOverzichtenTab">
+                        <Views:EntitiesOverview x:Name="dbcOverzichtenView"/>
                     </TabItem>
 
-                    <TabItem Header="Profielen" x:Name="DbcProfielenTab">
-                        <Views:SearchView/>
+                    <TabItem Header="Profielen">
+                        <Views:EntitiesOverview x:Name="dbcProfielenView"/>
                     </TabItem>
                 </TabControl>
             </TabItem>

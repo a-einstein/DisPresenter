@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
@@ -72,22 +74,29 @@
     <Compile Include="Behaviors\DataGridColumnsBehavior.cs" />
     <Compile Include="ViewModels\DbcOverzichtViewModel.cs" />
     <Compile Include="ViewModels\DbcProfielViewModel.cs" />
-    <Compile Include="ViewModels\GeneralFilterAreaViewModel.cs" />
-    <Compile Include="ViewModels\OverviewModel.cs" />
+    <Compile Include="ViewModels\DiagnoseSelectorViewModel.cs" />
+    <Compile Include="ViewModels\GeneralFilterViewModel.cs" />
+    <Compile Include="ViewModels\EntitiesOverviewModel.cs" />
+    <Compile Include="ViewModels\EntitiesSearchViewModel.cs" />
+    <Compile Include="ViewModels\SpecialismeSelectorViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
-    <Compile Include="Views\EntityFilterAreaView.xaml.cs">
-      <DependentUpon>EntityFilterAreaView.xaml</DependentUpon>
+    <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="ViewModels\ZorgactiviteitSelectorViewModel.cs" />
+    <Compile Include="ViewModels\ZorgproductSelectorViewModel.cs" />
+    <Compile Include="Views\EntityFilterView.xaml.cs">
+      <DependentUpon>EntityFilterView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchView.xaml.cs">
-      <DependentUpon>SearchView.xaml</DependentUpon>
+    <Compile Include="Views\EntitiesOverview.xaml.cs">
+      <DependentUpon>EntitiesOverview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TableSelectorView.xaml.cs">
-      <DependentUpon>TableSelectorView.xaml</DependentUpon>
+    <Compile Include="Views\EntitySelectorView.xaml.cs">
+      <DependentUpon>EntitySelectorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\TableSelectorViewModel.cs" />
-    <Compile Include="Views\GeneralFilterAreaView.xaml.cs">
-      <DependentUpon>GeneralFilterAreaView.xaml</DependentUpon>
+    <Compile Include="ViewModels\EntitySelectorViewModel.cs" />
+    <Compile Include="Views\GeneralFilterView.xaml.cs">
+      <DependentUpon>GeneralFilterView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\View.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -104,19 +113,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EntityFilterAreaView.xaml">
+    <Page Include="Views\EntityFilterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SearchView.xaml">
+    <Page Include="Views\EntitiesOverview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TableSelectorView.xaml">
+    <Page Include="Views\EntitySelectorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GeneralFilterAreaView.xaml">
+    <Page Include="Views\GeneralFilterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +164,9 @@
       <Project>{705bea18-52c4-44a3-9fa9-3cd7478c8022}</Project>
       <Name>RCS.DIS.Presenter.RetrieveService</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BaseClasses\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
