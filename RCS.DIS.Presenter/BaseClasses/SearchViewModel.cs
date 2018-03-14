@@ -4,7 +4,7 @@ using System.ServiceModel;
 using System.Windows;
 using System.Windows.Input;
 
-namespace RCS.DIS.Presenter.ViewModels
+namespace RCS.DIS.Presenter.BaseClasses
 {
     public abstract class SearchViewModel : ViewModel
     {

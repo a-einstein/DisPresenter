@@ -1,8 +1,7 @@
-﻿using RCS.DIS.Presenter.ViewModels;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace RCS.DIS.Presenter.Views
+namespace RCS.DIS.Presenter.BaseClasses
 {
     public abstract class View : UserControl
     {

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using RCS.DIS.Presenter.BaseClasses;
+using System.Windows;
 
 namespace RCS.DIS.Presenter.ViewModels
 {
@@ -45,7 +46,7 @@ namespace RCS.DIS.Presenter.ViewModels
 
         #region Versies
         public static readonly DependencyProperty VersiesProperty =
-            DependencyProperty.Register(nameof(Versies), typeof(string[]), typeof(MainWindow));
+            DependencyProperty.Register(nameof(Versies), typeof(string[]), typeof(GeneralFilterViewModel));
 
         public string[] Versies
         {
@@ -60,7 +61,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty VersieSelectedProperty =
-            DependencyProperty.Register(nameof(VersieSelected), typeof(string), typeof(MainWindow));
+            DependencyProperty.Register(nameof(VersieSelected), typeof(string), typeof(GeneralFilterViewModel));
 
         public string VersieSelected
         {

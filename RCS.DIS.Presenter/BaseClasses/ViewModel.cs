@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace RCS.DIS.Presenter.ViewModels
+namespace RCS.DIS.Presenter.BaseClasses
 {
     public abstract class ViewModel : DependencyObject, INotifyPropertyChanged
     {

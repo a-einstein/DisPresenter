@@ -1,8 +1,8 @@
-﻿<local:View 
+﻿<BaseClasses:View 
     x:Class="RCS.DIS.Presenter.Views.EntityFilterView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:RCS.DIS.Presenter.Views"
+    xmlns:BaseClasses="clr-namespace:RCS.DIS.Presenter.BaseClasses"
     xmlns:Behaviors="clr-namespace:RCS.DIS.Presenter.Behaviors"
     >
 
@@ -14,4 +14,4 @@
             <DataGrid ItemsSource="{Binding SelectedSource}" AutoGenerateColumns="False" Behaviors:DataGridColumnsBehavior.BindableColumns="{Binding FilterGridColumns}" IsReadOnly="True" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderReadOnlyStyle}" RowStyle="{StaticResource DataGridRowReadOnlyStyle}"/>
         </Button>
     </StackPanel>
-    </local:View>
+    </BaseClasses:View>

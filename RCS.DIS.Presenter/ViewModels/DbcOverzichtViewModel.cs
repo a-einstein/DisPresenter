@@ -1,4 +1,5 @@
-﻿using RCS.DIS.Presenter.RetrieveService.ServiceReference;
+﻿using RCS.DIS.Presenter.BaseClasses;
+using RCS.DIS.Presenter.RetrieveService.ServiceReference;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Data;

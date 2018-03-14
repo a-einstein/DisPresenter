@@ -1,10 +1,8 @@
-﻿using Prism.Commands;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RCS.DIS.Presenter.ViewModels
+namespace RCS.DIS.Presenter.BaseClasses
 {
     public abstract class EntitiesSearchViewModel<entityType> : SearchViewModel
     {
@@ -14,7 +12,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty GridColumnsProperty =
-            DependencyProperty.Register(nameof(GridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(EntitySelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(GridColumns), typeof(ObservableCollection<DataGridColumn>), typeof(EntitiesSearchViewModel<entityType>));
 
         public ObservableCollection<DataGridColumn> GridColumns
         {
@@ -37,7 +35,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty EntitiesProperty =
-            DependencyProperty.Register(nameof(Entities), typeof(entityType[]), typeof(EntitySelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(Entities), typeof(entityType[]), typeof(EntitiesSearchViewModel<entityType>));
 
         public entityType[] Entities
         {
@@ -52,7 +50,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty StartMessageProperty =
-            DependencyProperty.Register(nameof(StartMessage), typeof(string), typeof(EntitySelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(StartMessage), typeof(string), typeof(EntitiesSearchViewModel<entityType>));
 
         public string StartMessage
         {
@@ -61,7 +59,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty ResultMessageProperty =
-            DependencyProperty.Register(nameof(ResultMessage), typeof(string), typeof(EntitySelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(ResultMessage), typeof(string), typeof(EntitiesSearchViewModel<entityType>));
 
         public string ResultMessage
         {

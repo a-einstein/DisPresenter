@@ -17,9 +17,6 @@ namespace RCS.DIS.Presenter
             // Use an explicit instantiation instead of setting StartupUri to be able to catch exceptions, in particular EndpointNotFoundException.
             MainWindow = new MainWindow();
             MainWindow.Show();
-
-            // Call this explicitly to already have a window shown in case of exceptions.
-            (MainWindow as MainWindow).Initialize();
         }
 
         #region Error handling
@@ -55,6 +52,7 @@ namespace RCS.DIS.Presenter
         {
             // Try to prevent repeated messages.
             // TODO Does not work.
+            // TODO There even seems to be some loop.
             bool communicationExceptionHandled = false;
             bool otherExceptionHandled = false;
 

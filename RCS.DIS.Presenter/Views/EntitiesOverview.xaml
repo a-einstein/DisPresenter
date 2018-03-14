@@ -1,8 +1,8 @@
-﻿<local:View 
+﻿<BaseClasses:View 
     x:Class="RCS.DIS.Presenter.Views.EntitiesOverview"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:RCS.DIS.Presenter.Views"
+    xmlns:BaseClasses="clr-namespace:RCS.DIS.Presenter.BaseClasses"
     xmlns:Behaviors="clr-namespace:RCS.DIS.Presenter.Behaviors"
     >
 
@@ -22,4 +22,4 @@
 
         <DataGrid Grid.Row="3" ItemsSource="{Binding Entities}" AutoGenerateColumns="False" Behaviors:DataGridColumnsBehavior.BindableColumns="{Binding GridColumns}" IsReadOnly="True" SelectionMode="Single"/>
     </Grid>
-    </local:View>
+    </BaseClasses:View>
