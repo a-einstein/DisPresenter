@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="4M7xuaz3DH83sNgE8KjybjQwnzU=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="CBPBr7cr5Crl3LlSzoaEDJo465I=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="ws2007HttpBinding" name="WS2007HttpBinding_IRetrieveService">
+    <bindingConfiguration bindingType="ws2007HttpBinding" name="RetrieveServiceEndpoint">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WS2007HttpBinding_IRetrieveService</serializedValue>
+          <serializedValue>RetrieveServiceEndpoint</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -127,7 +127,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WS2007HttpBinding_IRetrieveService" contract="ServiceReference.IRetrieveService" bindingType="ws2007HttpBinding" address="http://localhost:50136/Retrieving/RetrieveService.svc/RetrieveService" bindingConfiguration="WS2007HttpBinding_IRetrieveService">
+    <endpoint name="RetrieveServiceEndpoint" contract="ServiceReference.IRetrieveService" bindingType="ws2007HttpBinding" address="http://localhost:50136/Retrieving/RetrieveService.svc/RetrieveService" bindingConfiguration="RetrieveServiceEndpoint">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:50136/Retrieving/RetrieveService.svc/RetrieveService</serializedValue>
@@ -139,7 +139,7 @@
           <serializedValue>ws2007HttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WS2007HttpBinding_IRetrieveService</serializedValue>
+          <serializedValue>RetrieveServiceEndpoint</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ServiceReference.IRetrieveService</serializedValue>
@@ -202,7 +202,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WS2007HttpBinding_IRetrieveService</serializedValue>
+          <serializedValue>RetrieveServiceEndpoint</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

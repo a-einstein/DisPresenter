@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RetrieveService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SymmetricBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -100,7 +100,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_Jaren_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_Jaren_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -119,7 +119,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_Jaren_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_Jaren_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -138,7 +138,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_Versies_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_Versies_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -157,7 +157,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_Versies_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_Versies_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -176,7 +176,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DiagnoseOmschrijvingContainsNumber_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DiagnoseOmschrijvingContainsNumber_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -195,7 +195,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DiagnoseOmschrijvingContainsNumber_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DiagnoseOmschrijvingContainsNumber_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -214,7 +214,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DiagnoseOmschrijvingContainsEntities_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DiagnoseOmschrijvingContainsEntities_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -233,7 +233,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DiagnoseOmschrijvingContainsEntities_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DiagnoseOmschrijvingContainsEntities_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -252,7 +252,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_SpecialismeOmschrijvingContainsNumber_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_SpecialismeOmschrijvingContainsNumber_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -271,7 +271,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_SpecialismeOmschrijvingContainsNumber_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_SpecialismeOmschrijvingContainsNumber_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -290,7 +290,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_SpecialismeOmschrijvingContainsEntities_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_SpecialismeOmschrijvingContainsEntities_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -309,7 +309,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_SpecialismeOmschrijvingContainsEntities_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_SpecialismeOmschrijvingContainsEntities_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -328,7 +328,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsNumber_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_ZorgactiviteitOmschrijvingContainsNumber_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -347,7 +347,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsNumber_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_ZorgactiviteitOmschrijvingContainsNumber_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -366,7 +366,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsEntities_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_ZorgactiviteitOmschrijvingContainsEntities_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -385,7 +385,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsEntities_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_ZorgactiviteitOmschrijvingContainsEntities_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -404,7 +404,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsNumber_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_ZorgproductOmschrijvingContainsNumber_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -423,7 +423,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsNumber_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_ZorgproductOmschrijvingContainsNumber_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -442,7 +442,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsEntities_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_ZorgproductOmschrijvingContainsEntities_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -461,7 +461,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsEntities_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_ZorgproductOmschrijvingContainsEntities_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -480,7 +480,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DbcOverzichtNumber_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DbcOverzichtNumber_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -499,7 +499,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DbcOverzichtNumber_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DbcOverzichtNumber_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -518,7 +518,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DbcOverzichtEntities_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DbcOverzichtEntities_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -537,7 +537,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DbcOverzichtEntities_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DbcOverzichtEntities_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -556,7 +556,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DbcProfielNumber_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DbcProfielNumber_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -575,7 +575,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DbcProfielNumber_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DbcProfielNumber_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -594,7 +594,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DbcProfielEntities_Input_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DbcProfielEntities_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -613,7 +613,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WS2007HttpBinding_IRetrieveService_DbcProfielEntities_output_policy">
+  <wsp:Policy wsu:Id="RetrieveServiceEndpoint_DbcProfielEntities_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
@@ -782,166 +782,166 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IRetrieveService/DbcProfielEntitiesResponse" message="tns:IRetrieveService_DbcProfielEntities_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="WS2007HttpBinding_IRetrieveService" type="tns:IRetrieveService">
-    <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_policy" />
+  <wsdl:binding name="RetrieveServiceEndpoint" type="tns:IRetrieveService">
+    <wsp:PolicyReference URI="#RetrieveServiceEndpoint_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Jaren">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/Jaren" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_Jaren_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_Jaren_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_Jaren_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_Jaren_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Versies">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/Versies" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_Versies_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_Versies_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_Versies_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_Versies_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DiagnoseOmschrijvingContainsNumber">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/DiagnoseOmschrijvingContainsNumber" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DiagnoseOmschrijvingContainsNumber_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DiagnoseOmschrijvingContainsNumber_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DiagnoseOmschrijvingContainsNumber_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DiagnoseOmschrijvingContainsNumber_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DiagnoseOmschrijvingContainsEntities">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/DiagnoseOmschrijvingContainsEntities" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DiagnoseOmschrijvingContainsEntities_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DiagnoseOmschrijvingContainsEntities_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DiagnoseOmschrijvingContainsEntities_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DiagnoseOmschrijvingContainsEntities_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SpecialismeOmschrijvingContainsNumber">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/SpecialismeOmschrijvingContainsNumber" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_SpecialismeOmschrijvingContainsNumber_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_SpecialismeOmschrijvingContainsNumber_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_SpecialismeOmschrijvingContainsNumber_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_SpecialismeOmschrijvingContainsNumber_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SpecialismeOmschrijvingContainsEntities">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/SpecialismeOmschrijvingContainsEntities" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_SpecialismeOmschrijvingContainsEntities_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_SpecialismeOmschrijvingContainsEntities_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_SpecialismeOmschrijvingContainsEntities_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_SpecialismeOmschrijvingContainsEntities_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ZorgactiviteitOmschrijvingContainsNumber">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/ZorgactiviteitOmschrijvingContainsNumber" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsNumber_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_ZorgactiviteitOmschrijvingContainsNumber_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsNumber_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_ZorgactiviteitOmschrijvingContainsNumber_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ZorgactiviteitOmschrijvingContainsEntities">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/ZorgactiviteitOmschrijvingContainsEntities" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsEntities_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_ZorgactiviteitOmschrijvingContainsEntities_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgactiviteitOmschrijvingContainsEntities_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_ZorgactiviteitOmschrijvingContainsEntities_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ZorgproductOmschrijvingContainsNumber">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsNumber" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsNumber_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_ZorgproductOmschrijvingContainsNumber_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsNumber_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_ZorgproductOmschrijvingContainsNumber_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ZorgproductOmschrijvingContainsEntities">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/ZorgproductOmschrijvingContainsEntities" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsEntities_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_ZorgproductOmschrijvingContainsEntities_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_ZorgproductOmschrijvingContainsEntities_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_ZorgproductOmschrijvingContainsEntities_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DbcOverzichtNumber">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/DbcOverzichtNumber" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DbcOverzichtNumber_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DbcOverzichtNumber_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DbcOverzichtNumber_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DbcOverzichtNumber_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DbcOverzichtEntities">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/DbcOverzichtEntities" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DbcOverzichtEntities_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DbcOverzichtEntities_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DbcOverzichtEntities_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DbcOverzichtEntities_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DbcProfielNumber">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/DbcProfielNumber" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DbcProfielNumber_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DbcProfielNumber_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DbcProfielNumber_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DbcProfielNumber_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DbcProfielEntities">
       <soap12:operation soapAction="http://tempuri.org/IRetrieveService/DbcProfielEntities" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DbcProfielEntities_Input_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DbcProfielEntities_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WS2007HttpBinding_IRetrieveService_DbcProfielEntities_output_policy" />
+        <wsp:PolicyReference URI="#RetrieveServiceEndpoint_DbcProfielEntities_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="RetrieveService">
-    <wsdl:port name="WS2007HttpBinding_IRetrieveService" binding="tns:WS2007HttpBinding_IRetrieveService">
+    <wsdl:port name="RetrieveServiceEndpoint" binding="tns:RetrieveServiceEndpoint">
       <soap12:address location="http://localhost:50136/Retrieving/RetrieveService.svc/RetrieveService" />
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:50136/Retrieving/RetrieveService.svc/RetrieveService</wsa10:Address>
