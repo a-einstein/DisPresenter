@@ -1,5 +1,6 @@
 ﻿using RCS.DIS.Presenter.BaseClasses;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -34,10 +35,10 @@ namespace RCS.DIS.Presenter.ViewModels
             set { SetValue(NoteProperty, value); }
         }
 
-        public delegate int OmschrijvingContainsNumberDelegate(string SearchString);
+        public delegate Task<int> OmschrijvingContainsNumberDelegate(string SearchString);
         abstract protected OmschrijvingContainsNumberDelegate NumberDelegate { get; }
 
-        public delegate entityType[] OmschrijvingContainsEntitiesDelegate(string SearchString);
+        public delegate Task<entityType[]> OmschrijvingContainsEntitiesDelegate(string SearchString);
         abstract protected OmschrijvingContainsEntitiesDelegate EntitiesDelegate { get; }
 
         public static readonly DependencyProperty FilterGridColumnsProperty =
@@ -61,9 +62,9 @@ namespace RCS.DIS.Presenter.ViewModels
             set { SetValue(SearchStringProperty, value); }
         }
 
-        protected override void Retrieve()
+        protected override async Task Retrieve()
         {
-            var number = NumberDelegate(SearchString);
+            var number = await NumberDelegate(SearchString);
 
             ResultMessage = $"Found {number}.";
 
@@ -73,7 +74,7 @@ namespace RCS.DIS.Presenter.ViewModels
             {
                 ResultMessage = $"{ResultMessage}\nPlease select an entry, it will be added to the Filter tab.";
 
-                Entities = EntitiesDelegate(SearchString);
+                Entities = await EntitiesDelegate(SearchString);
             }
         }
 

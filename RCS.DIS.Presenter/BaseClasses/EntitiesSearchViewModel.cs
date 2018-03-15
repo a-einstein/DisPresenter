@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -26,12 +27,12 @@ namespace RCS.DIS.Presenter.BaseClasses
 
         // TODO Need enablement for required keys.
         // TODO Handle empty keys as far as useful.
-        public override void Search()
+        public override async Task Search()
         {
             ResultMessage = null;
             Entities = null;
 
-            base.Search();
+            await base.Search();
         }
 
         public static readonly DependencyProperty EntitiesProperty =

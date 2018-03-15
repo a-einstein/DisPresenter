@@ -1,6 +1,7 @@
 ﻿using RCS.DIS.Presenter.BaseClasses;
 using RCS.DIS.Presenter.RetrieveService.ServiceReference;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Data;
 
@@ -47,9 +48,9 @@ namespace RCS.DIS.Presenter.ViewModels
             return columns;
         }
 
-        protected override void Retrieve()
+        protected override async Task Retrieve()
         {
-            var number = retrieveServiceClient.DbcOverzichtNumber(
+            var number = await retrieveServiceClient.DbcOverzichtNumberAsync(
                 GeneralSelector.JaarSelected,
                 SpecialismeSelector.Selected.SpecialismeCode,
                 DiagnoseSelector.Selected.DiagnoseCode,
@@ -62,7 +63,7 @@ namespace RCS.DIS.Presenter.ViewModels
             if (number == 0 || number > maximumRecords)
                 ResultMessage = $"{ResultMessage}\nPlease refine your query.";
             else
-                Entities = retrieveServiceClient.DbcOverzichtEntities(
+                Entities = await retrieveServiceClient.DbcOverzichtEntitiesAsync(
                     GeneralSelector.JaarSelected,
                     SpecialismeSelector.Selected.SpecialismeCode,
                     DiagnoseSelector.Selected.DiagnoseCode,

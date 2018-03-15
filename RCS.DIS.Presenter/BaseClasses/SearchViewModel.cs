@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using RCS.DIS.Presenter.RetrieveService.ServiceReference;
 using System.ServiceModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -12,7 +13,7 @@ namespace RCS.DIS.Presenter.BaseClasses
         {
             // TODO add enablement.
             // TODO Would like to assign as default.
-            SearchCommand = new DelegateCommand(Search);
+            SearchCommand = new DelegateCommand(async () => await Search());
         }
 
         static protected RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
@@ -38,13 +39,13 @@ namespace RCS.DIS.Presenter.BaseClasses
             set { SetValue(SearchCommandProperty, value); }
         }
 
-        public virtual void Search()
+        public virtual async Task Search()
         {
             CheckService();
 
-            Retrieve();
+            await Retrieve();
         }
 
-        protected abstract void Retrieve();
+        protected abstract Task Retrieve();
     }
 }

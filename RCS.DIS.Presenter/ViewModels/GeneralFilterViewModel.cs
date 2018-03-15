@@ -1,21 +1,27 @@
 ﻿using RCS.DIS.Presenter.BaseClasses;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace RCS.DIS.Presenter.ViewModels
 {
     public class GeneralFilterViewModel : SearchViewModel
     {
-        public override void Initialize()
+        public override async void Initialize()
         {
-            base.Initialize();
+            // Prevent repeated calls when ViewModel is shared.
+            if (!initialized)
+                // Because method is async it does not block the application to complete full graphical start.
+                await Search();
 
-            Search();
+            // Note this might not be reached because of a previous exception, in particular CommunicationException.
+            base.Initialize();
         }
 
-        protected override void Retrieve()
+        protected override async Task Retrieve()
         {
-            Jaren = retrieveServiceClient.Jaren();
-            Versies = retrieveServiceClient.Versies();
+            // Unconditionally fill option lists.
+            Jaren = await retrieveServiceClient.JarenAsync();
+            Versies = await retrieveServiceClient.VersiesAsync();
         }
 
         #region Jaren

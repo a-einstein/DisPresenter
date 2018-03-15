@@ -27,7 +27,7 @@ namespace RCS.DIS.Presenter.ViewModels
             return columns;
         }
 
-        protected override OmschrijvingContainsNumberDelegate NumberDelegate => retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumber;
-        protected override OmschrijvingContainsEntitiesDelegate EntitiesDelegate => retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntities;
+        protected override OmschrijvingContainsNumberDelegate NumberDelegate => retrieveServiceClient.ZorgactiviteitOmschrijvingContainsNumberAsync;
+        protected override OmschrijvingContainsEntitiesDelegate EntitiesDelegate => retrieveServiceClient.ZorgactiviteitOmschrijvingContainsEntitiesAsync;
     }
 }

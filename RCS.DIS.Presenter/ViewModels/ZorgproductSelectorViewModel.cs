@@ -29,7 +29,7 @@ namespace RCS.DIS.Presenter.ViewModels
             return columns;
         }
 
-        protected override OmschrijvingContainsNumberDelegate NumberDelegate => retrieveServiceClient.ZorgproductOmschrijvingContainsNumber;
-        protected override OmschrijvingContainsEntitiesDelegate EntitiesDelegate => retrieveServiceClient.ZorgproductOmschrijvingContainsEntities;
+        protected override OmschrijvingContainsNumberDelegate NumberDelegate => retrieveServiceClient.ZorgproductOmschrijvingContainsNumberAsync;
+        protected override OmschrijvingContainsEntitiesDelegate EntitiesDelegate => retrieveServiceClient.ZorgproductOmschrijvingContainsEntitiesAsync;
     }
 }

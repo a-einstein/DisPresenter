@@ -52,14 +52,13 @@ namespace RCS.DIS.Presenter
         {
             // Try to prevent repeated messages.
             // TODO Does not work.
-            // TODO There even seems to be some loop.
             bool communicationExceptionHandled = false;
             bool otherExceptionHandled = false;
 
             if (exception is CommunicationException && !communicationExceptionHandled)
             {
                 communicationExceptionHandled = true;
-                DisplayMessage(exception, "There is a problem using our data service.");
+                DisplayMessage(exception, "There is a problem using our data service.\nPlease repeat your search, use refresh or try again later.");
             }
             else
             {

@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace RCS.DIS.Presenter.BaseClasses
 {
@@ -9,14 +8,14 @@ namespace RCS.DIS.Presenter.BaseClasses
         public ViewModel ViewModel
         {
             get { return DataContext as ViewModel; }
-            set { DataContext = value; }
-        }
+            set
+            {
+                DataContext = value;
 
-        protected override void OnRender(DrawingContext drawingContext)
-        {
-            base.OnRender(drawingContext);
-
-            ViewModel.Initialize();
+                // Use this to have automatic initialization.
+                // Note that overriding OnRender for this purpose caused a loop in case of exceptions.
+                ViewModel.Initialize();
+            }
         }
     }
 }
