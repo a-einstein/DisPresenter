@@ -41,7 +41,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty JaarSelectedProperty =
-            DependencyProperty.Register(nameof(JaarSelected), typeof(short), typeof(GeneralFilterViewModel));
+            DependencyProperty.Register(nameof(JaarSelected), typeof(short), typeof(GeneralFilterViewModel), new PropertyMetadata((short)0));
 
         public short JaarSelected
         {

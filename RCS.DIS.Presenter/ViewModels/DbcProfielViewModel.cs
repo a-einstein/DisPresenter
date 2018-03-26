@@ -10,17 +10,19 @@ namespace RCS.DIS.Presenter.ViewModels
     class DbcProfielViewModel : EntitiesOverviewModel<DbcProfiel>
     {
         public DbcProfielViewModel(
-             GeneralFilterViewModel generalSelector,
-             EntitySelectorViewModel<Diagnose> diagnoseSelector,
-             EntitySelectorViewModel<Specialisme> specialismeSelector,
-             EntitySelectorViewModel<Zorgactiviteit> zorgactiviteitSelector,
-             EntitySelectorViewModel<Zorgproduct> zorgproductSelector)
+            GeneralFilterViewModel generalSelector,
+            EntitySelectorViewModel<Diagnose> diagnoseSelector,
+            EntitySelectorViewModel<Specialisme> specialismeSelector,
+            EntitySelectorViewModel<Zorgactiviteit> zorgactiviteitSelector,
+            EntitySelectorViewModel<Zorgproduct> zorgproductSelector)
+            : base(
+                generalSelector,
+                diagnoseSelector,
+                specialismeSelector,
+                zorgproductSelector)
         {
-            GeneralSelector = generalSelector;
-            DiagnoseSelector = diagnoseSelector;
-            SpecialismeSelector = specialismeSelector;
             ZorgactiviteitSelector = zorgactiviteitSelector;
-            ZorgproductSelector = zorgproductSelector;
+            ZorgactiviteitSelector.PropertyChanged += Selector_PropertyChanged;
         }
 
         protected override ObservableCollection<DataGridColumn> GetGridColumns()
@@ -43,6 +45,14 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         protected EntitySelectorViewModel<Zorgactiviteit> ZorgactiviteitSelector;
+
+        protected override bool SearchEnabled()
+        {
+            return
+                base.SearchEnabled() &&
+                
+                ZorgactiviteitSelector?.Selected != null;
+        }
 
         protected override async Task Retrieve()
         {

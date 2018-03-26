@@ -54,12 +54,26 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty SearchStringProperty =
-            DependencyProperty.Register(nameof(SearchString), typeof(string), typeof(EntitySelectorViewModel<entityType>));
+            DependencyProperty.Register(nameof(SearchString), typeof(string), typeof(EntitySelectorViewModel<entityType>), new PropertyMetadata(new PropertyChangedCallback(OnSearchStringChanged)));
 
         public string SearchString
         {
             get { return (string)GetValue(SearchStringProperty); }
             set { SetValue(SearchStringProperty, value); }
+        }
+
+        private static void OnSearchStringChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            // Note this did not work in the setter itself as DependencyProperty nor by explicitly call.
+            (d as EntitySelectorViewModel<entityType>).SearchCommand.RaiseCanExecuteChanged();
+        }
+
+        protected override bool SearchEnabled()
+        {
+            return
+                base.SearchEnabled() &&
+
+                !string.IsNullOrEmpty(SearchString);
         }
 
         protected override async Task Retrieve()
@@ -88,7 +102,7 @@ namespace RCS.DIS.Presenter.ViewModels
         }
 
         public static readonly DependencyProperty SelectedProperty =
-            DependencyProperty.Register(nameof(Selected), typeof(entityType), typeof(EntitySelectorViewModel<entityType>), new PropertyMetadata(new PropertyChangedCallback(SetSelectedSource)));
+            DependencyProperty.Register(nameof(Selected), typeof(entityType), typeof(EntitySelectorViewModel<entityType>), new PropertyMetadata(new PropertyChangedCallback(OnSelectedChanged)));
 
         public entityType Selected
         {
@@ -96,10 +110,15 @@ namespace RCS.DIS.Presenter.ViewModels
             set { SetValue(SelectedProperty, value); }
         }
 
-        private static void SetSelectedSource(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnSelectedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var viewModel = d as EntitySelectorViewModel<entityType>;
+
+            // TODO Does this need to be repeated at every change?
             viewModel.SelectedSource = new entityType[] { viewModel.Selected };
+
+            // Note this did not work in the setter itself as DependencyProperty nor by explicitly call.
+            viewModel.RaisePropertyChanged(nameof(Selected));
         }
 
         public static readonly DependencyProperty SelectedSourceProperty =

@@ -18,12 +18,12 @@ namespace RCS.DIS.Presenter.ViewModels
             EntitySelectorViewModel<Diagnose> diagnoseSelector,
             EntitySelectorViewModel<Specialisme> specialismeSelector,
             EntitySelectorViewModel<Zorgproduct> zorgproductSelector)
-        {
-            GeneralSelector = generalSelector;
-            DiagnoseSelector = diagnoseSelector;
-            SpecialismeSelector = specialismeSelector;
-            ZorgproductSelector = zorgproductSelector;
-        }
+            : base(
+                generalSelector,
+                diagnoseSelector,
+                specialismeSelector,
+                zorgproductSelector)
+        { }
 
         protected override ObservableCollection<DataGridColumn> GetGridColumns()
         {

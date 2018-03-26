@@ -3,7 +3,6 @@ using RCS.DIS.Presenter.RetrieveService.ServiceReference;
 using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 
 namespace RCS.DIS.Presenter.BaseClasses
 {
@@ -11,14 +10,13 @@ namespace RCS.DIS.Presenter.BaseClasses
     {
         protected SearchViewModel()
         {
-            // TODO add enablement.
             // TODO Would like to assign as default.
-            SearchCommand = new DelegateCommand(async () => await Search());
+            SearchCommand = new DelegateCommand(async () => await Search(), SearchEnabled);
         }
 
         static protected RetrieveServiceClient retrieveServiceClient = new RetrieveServiceClient();
 
-        private static void CheckService()
+        private void CheckService()
         {
             // TODO This works when starting up without an active service, but it fails when interrupted with "unsecured or incorrectly secured fault was received from the other party".
             if (retrieveServiceClient.State == CommunicationState.Faulted)
@@ -27,15 +25,22 @@ namespace RCS.DIS.Presenter.BaseClasses
 
                 // There seems to be no other way to recover.
                 retrieveServiceClient = new RetrieveServiceClient();
+
+                SearchCommand.RaiseCanExecuteChanged();
             }
         }
 
-        public static readonly DependencyProperty SearchCommandProperty =
-             DependencyProperty.Register(nameof(SearchCommand), typeof(ICommand), typeof(SearchViewModel));
-
-        public ICommand SearchCommand
+        protected virtual bool SearchEnabled()
         {
-            get { return (ICommand)GetValue(SearchCommandProperty); }
+            return retrieveServiceClient?.State != CommunicationState.Faulted;
+        }
+
+        public static readonly DependencyProperty SearchCommandProperty =
+             DependencyProperty.Register(nameof(SearchCommand), typeof(DelegateCommand), typeof(SearchViewModel));
+
+        public DelegateCommand SearchCommand
+        {
+            get { return (DelegateCommand)GetValue(SearchCommandProperty); }
             set { SetValue(SearchCommandProperty, value); }
         }
 
